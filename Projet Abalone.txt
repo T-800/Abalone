@@ -1,0 +1,114 @@
+Projet Abalone 
+
+23 Mars 2013
+
+##Pseudo-code pour la lecture d'un fichier##
+
+on verifie si le fichier passé en argument existe
+	- s'il existe on continue
+	- sinon on quitte avec un code d'erreur 
+
+on verifie l'extension du fichier
+	- s'il a une bone extension on cotinue 
+	- sinon on quitte avec un code d'erreur
+
+on lit la première ligne 
+	- si le premier char est un B le blanc joue le prochain coup
+	- sinon si c'est un N le noir joue le prochain coup 
+	- sinon on quitte avec un code d'erreur
+
+	le char suivant est le nombre de bille blanche perdu
+	et le "dernier" de la ligne le nombre de bille noir perdu
+	s'il y a encore un char on quitte avec un code d'erreur
+
+tant que le fichier n'est pas fini on lit la ligne suivante 
+	tant que la ligne n'est pas fini on lit le char suivante
+		si le char est un B on met un pion blanc sur le plateau
+		sinon si le char est un N on met un pion noir sur le plateau
+		sinon si le char est un . on met un . noir sur le plateau
+
+		on passe au char suivant
+	si la ligne du fichier est fini mais que la ligne du plateau n'est pas pleinne on quitte avec un code d'erreur
+	sinon on passe a la ligne suivante
+s'il n'y a plus de ligne mais que le plateau n'es pas remplit on quitte avec un code d'erreur
+sinon retour avec code erreur 0.
+
+
+##sauvegarde##
+Pour la sauvegarde on peut juste adapter le code de la lecture pour ecrire dans un fichier 
+
+
+##Affichage du plateau##
+
+       -----------
+    I / N N N N N \
+   H / N N N N N N \
+  F / . . N N N . . \
+ G / . . . . . . . . \
+E | . . . . . . . . . |
+ D \ . . . . . . . . / 
+  C \ . . B B B . . / 9
+   B \ B B B B B B / 8
+    A \ B B B B B / 7
+       ----------- 6
+          1 2 3 4 5
+
+
+
+
+
+##tableau du plateau##
+
+80 81 82 83 84
+70 71 72 73 74 75
+60 61 62 63 64 65 66
+50 51 52 53 54 55 56 57 
+40 41 42 43 44 45 46 47 48
+30 31 32 33 34 35 36 37
+20 21 22 23 24 25 26
+10 11 12 13 14 15 
+00 01 02 03 04 
+
+              80     81     82     83     84
+
+           70     71     72     73     74     75    
+
+       60     61     62     63     64     65     66
+
+    50     51     52     53     54     55     56     57 
+
+40     41     42     43     44     45     46     47     48
+
+    30     31     32     33     34     35     36     37
+
+       20     21     22     23     24     25     26    
+
+           10     11     12     13     14     15 
+
+              00     01     02     03     04 
+
+
+##Creation du plateau##
+J'ai aussi trouvé ça ! que j'ai adapté mais pas essayé
+si on fait un tableau de char pour le plateau
+
+char **creationPlateau(){
+	char **plateau;
+ 
+	/* Allocation de la 1er dimension */
+    plateau = (char **)malloc ( sizeof(char *)  *  9);
+
+	/* Allocation 2e dimension */
+	plateau[0] = (char *)malloc (sizeof(char) * 5);
+	plateau[1] = (char *)malloc (sizeof(char) * 6);
+	plateau[2] = (char *)malloc (sizeof(char) * 7);
+	plateau[3] = (char *)malloc (sizeof(char) * 8);
+	plateau[4] = (char *)malloc (sizeof(char) * 9);
+	plateau[5] = (char *)malloc (sizeof(char) * 8);
+	plateau[6] = (char *)malloc (sizeof(char) * 7);
+	plateau[7] = (char *)malloc (sizeof(char) * 6);
+	plateau[8] = (char *)malloc (sizeof(char) * 5);
+
+
+    return plateau;
+}
