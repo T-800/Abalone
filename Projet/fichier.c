@@ -22,8 +22,8 @@ int fichierConfig(char* fic, Plateau *plateau){
              
             if (compteurCharFichier > 2){
                 
-                if (caractereActuel=='B' || caractereActuel=='b' || 
-                    caractereActuel=='N' || caractereActuel=='n' || 
+                if (caractereActuel=='B' || /*caractereActuel=='b' ||*/ 
+                    caractereActuel=='N' || /*caractereActuel=='n' || */
                     caractereActuel=='.'){
                     
                     plateau->tableau[i][j] = caractereActuel;

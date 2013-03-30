@@ -1,13 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "plateau.h"
 
 Plateau creationPlateau(){
 	Plateau plateau;
 
 	/* Allocation de la 1er dimension */
-    plateau.tableau = malloc ( sizeof(char *)  *  9);
+    plateau.tableau = malloc( sizeof(char *)  *  9);
 
 	/* Allocation 2e dimension */
-	plateau.tableau[0] = malloc (sizeof(char) * 5);
+	plateau.tableau[0] = malloc(sizeof(char) * 5);
 	plateau.tableau[1] = malloc (sizeof(char) * 6);
 	plateau.tableau[2] = malloc (sizeof(char) * 7);
 	plateau.tableau[3] = malloc (sizeof(char) * 8);
@@ -26,7 +28,7 @@ Plateau creationPlateau(){
 }
 
 void affichagePlateau(Plateau *p){
-	int j =0, i = 0;
+	int j =0, i = 0;/*i = la ligne et j la colonne */
 	printf("       -----------\n    I / ");
 	
 	while (i < 9 ){

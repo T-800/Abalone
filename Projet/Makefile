@@ -1,4 +1,4 @@
-SOURCES=plateau.c fichier.c main.c
+SOURCES=clavier.c plateau.c fichier.c main.c
 OBJECTS=$(SOURCES:.c=.o)
 CFLAGS= -std=c89 -Wall -pedantic
 EXECUTABLE=abalone
