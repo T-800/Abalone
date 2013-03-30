@@ -5,10 +5,8 @@
 Plateau creationPlateau(){
 	Plateau plateau;
 
-	/* Allocation de la 1er dimension */
     plateau.tableau = malloc( sizeof(char *)  *  9);
 
-	/* Allocation 2e dimension */
 	plateau.tableau[0] = malloc(sizeof(char) * 5);
 	plateau.tableau[1] = malloc (sizeof(char) * 6);
 	plateau.tableau[2] = malloc (sizeof(char) * 7);

@@ -1,6 +1,10 @@
 #ifndef PLATEAU_H_INCLUDED
 #define PLATEAU_H_INCLUDED
 
+
+/*
+structure du plateau 
+*/
 typedef struct {
     char **tableau;
     int billesBlachesperdues;
@@ -9,7 +13,15 @@ typedef struct {
 
 } Plateau;
 
+
+/*
+
+*/
 Plateau creationPlateau();
+
+/*
+
+*/
 void affichagePlateau(Plateau *p);
 
 
