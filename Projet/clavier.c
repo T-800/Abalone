@@ -4,6 +4,7 @@
 
 int syntaxeCoups(char * coups){
 
+	
 	return 0;
 
 }
