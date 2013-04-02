@@ -1,9 +1,10 @@
-NabN N N N N
+Nab
+	 N N N N N
 	N N N N N N 
-   . . ... . . 
+   . . N N N . . 
   . . . . . . . . 
- . . . .NNN . .
+ . . . . . . . . .
   . . . . . . . .
    . . B B B . . 
     B B B B B B
-     B B B B B  BB
+     B B B B B 

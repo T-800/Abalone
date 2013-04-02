@@ -4,7 +4,7 @@
 
 Plateau creationPlateau(){
 	Plateau plateau;
-
+	
     plateau.tableau = malloc( sizeof(char *)  *  9);
 
 	plateau.tableau[0] = malloc(sizeof(char) * 5);

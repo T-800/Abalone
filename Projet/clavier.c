@@ -8,3 +8,8 @@ int syntaxeCoups(char * coups){
 	return 0;
 
 }
+
+
+char *decoupageCoups(char * coups){
+
+}

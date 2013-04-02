@@ -100,11 +100,11 @@ int fichierConfig(char* fic, Plateau *plateau){
         fclose(fichier);
 
         if ( blanc != 14){
-            printf("il n'y a pas assez de char sur le plateau : %d\n", compteauCharPlateau);
+            printf("il n'y a pas assez de pions Blancs sur le plateau : %d\n", blanc);
             return 3;
         }
         if ( noir != 14){
-            printf("il n'y a pas assez de char sur le plateau : %d\n", compteauCharPlateau);
+            printf("il n'y a pas assez de pions Noirs sur sur le plateau : %d\n", noir);
             return 3;
         }
         if (compteauCharPlateau<61){

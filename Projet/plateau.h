@@ -15,12 +15,12 @@ typedef struct {
 
 
 /*
-
+Création du plateau et initialisation du plateau de jeu (À faire) 
 */
 Plateau creationPlateau();
 
 /*
-
+Cette fonction affiche le plateau tout simplement 
 */
 void affichagePlateau(Plateau *p);
 
