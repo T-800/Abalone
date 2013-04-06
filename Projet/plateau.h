@@ -24,6 +24,8 @@ Cette fonction affiche le plateau tout simplement
 */
 void affichagePlateau(Plateau *p);
 
+void affichagePlateauColor(Plateau *p, int pionX, int pionY);
+
 
 #endif 
 
