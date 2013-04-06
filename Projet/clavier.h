@@ -12,7 +12,7 @@ int verifSyntaxeCoups(char *);
 /*
 
 */
-char *decoupageCoups(char *);
+int** decoupageCoups(char *);
 
 
 

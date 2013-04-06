@@ -9,5 +9,7 @@ elle est appelé avec l'otopn -c donnée au programme
 */
 int fichierConfig(char* fic, Plateau *plateau);
 
+void affichagePlateauColor(Plateau *p, int pionX, int pionY);
+
 
 #endif
