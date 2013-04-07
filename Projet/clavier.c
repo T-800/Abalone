@@ -1,10 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <regex.h>
 #include "clavier.h"
 
 int syntaxeCoups(char * coups){
 
-	
+	int taille;
+	taille = strlen(coups);
+	printf("taille de la chaine %d\n", taille);
+
+
 	return 0;
 
 }
@@ -13,12 +19,12 @@ int syntaxeCoups(char * coups){
 int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 	
 	int **coordonnee;
-	printf("RRRRR \n");
+	/*int nombreCoordonne = strlen(coups);*/
+	
 	if(syntaxeCoups(coups) != 0){
 		printf("ERROR : Syntax non valide \n");
 		return NULL;
 	}
-	printf(" coups [0]%c  \n",coups[0] );
 	
 	coordonnee = malloc( sizeof(int *)  *  1);
 	coordonnee[0] = malloc( sizeof(int)  *  2);
@@ -27,7 +33,6 @@ int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 	switch (coups[0]){
 		case 'A':
 		case 'a': 
-			printf("OK 0.5 : \n");
 			coordonnee[0][0] = 8;
 			coordonnee[0][1] = 0;
 			break;
@@ -72,12 +77,10 @@ int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 			coordonnee[0][1] = -4;
 			break;
 	}
-	printf(" x = %d   \n",coordonnee[0][0]);
-	printf("OK 2 : \n");
+	
+
 	coordonnee[0][1] +=(int) (coups[1]-'0');
 	coordonnee[0][1] -=1;
-	printf("OK 3 : \n");
-	printf(" x = %d  y =  %d \n",coordonnee[0][0],coordonnee[0][1] );
 
 	return coordonnee;
 
