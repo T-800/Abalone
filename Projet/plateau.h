@@ -10,6 +10,8 @@ typedef struct {
     int billesBlachesperdues;
     int billesNoiresperdues;
     char JoueurSuivant;
+    int typeBlanc ;
+    int typeNoir;
 
 } Plateau;
 

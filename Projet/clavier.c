@@ -45,7 +45,7 @@ int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 	int **coordonnee;
 	/*int nombreCoordonne = strlen(coups);*/
 	int syntaxe = syntaxeCoups(coups);
-	int index=1;
+	/*int index=1;*/
 	char substring [3] = "  ";
 	
 	if (syntaxe == 2){
