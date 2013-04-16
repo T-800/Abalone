@@ -6,21 +6,25 @@
 #include "clavier.h"
 #include "option.h"
 
-
 int main(int argc, char const *argv[]){
 	
-	int j;
+
+
+	int j,i;
     Plateau p = creationPlateau();
 
+    optionGlobales(argv,argc,&p);
 
-	char *fic = "test.ab";
-	char *coups = malloc(sizeof(char)*9);
-	int i = fichierConfig(fic, &p);
-	int **coordonnee;
 	
+	char *coups = malloc(sizeof(char)*9);
+	int **coordonnee;
+
 	for(j = 0 ; j< argc; j++){
 		printf("arg % d : %s\n", j+1, argv[j]);
 	}
+	printf("BLANC type : %d\n",p.typeBlanc);
+	printf("NOIR type : %d\n",p.typeNoir);
+	
 
 	
 

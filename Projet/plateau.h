@@ -21,6 +21,9 @@ Création du plateau et initialisation du plateau de jeu (À faire)
 */
 Plateau creationPlateau();
 
+void initPlateau(Plateau *p);
+
+
 /*
 Cette fonction affiche le plateau tout simplement 
 */

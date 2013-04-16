@@ -20,10 +20,18 @@ Plateau creationPlateau(){
 	plateau.billesNoiresperdues = 0;
 	plateau.JoueurSuivant= 'Z';
 
-
-
     return plateau;
 }
+
+void initPlateau(Plateau *p){
+	
+}
+
+
+
+
+
+
 
 void affichagePlateau(Plateau *p){
 	int j =0, i = 0;/*i = la ligne et j la colonne */

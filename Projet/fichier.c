@@ -5,14 +5,11 @@
 
 
 int fichierConfig(char* fic, Plateau *plateau){
-    
     FILE *fichier = NULL;
     char caractereActuel;
     int compteurCharFichier=0,compteauCharPlateau =0;
     int i=0,j=0, blanc = 0, noir = 0;
     fichier = fopen(fic, "r");
-   	
-    
 
     if (fichier != NULL){
         printf("Le fichier %s à bien été ouvert\n", fic);
@@ -22,13 +19,13 @@ int fichierConfig(char* fic, Plateau *plateau){
              
             if (compteurCharFichier > 2){
                 
-                if (caractereActuel=='B' || /*caractereActuel=='b' ||*/ 
-                    caractereActuel=='N' || /*caractereActuel=='n' || */
+                if (caractereActuel=='B' || caractereActuel=='b' || 
+                    caractereActuel=='N' || caractereActuel=='n' || 
                     caractereActuel=='.'){
 
 
                     if(compteauCharPlateau >61){
-                        printf("il y a trop de char sur le plateau : %d\n", compteauCharPlateau);
+                        printf("il y a trop de pion sur le plateau : %d\n", compteauCharPlateau);
                         return 3;
                     }
 

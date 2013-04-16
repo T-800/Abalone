@@ -1,6 +1,6 @@
 SOURCES=option.c clavier.c plateau.c fichier.c main.c
 OBJECTS=$(SOURCES:.c=.o)
-CFLAGS= -std=c89 -Wall -pedantic
+CFLAGS= -std=c89 -Wall -pedantic -ansi -g
 EXECUTABLE=abalone
 
 $(EXECUTABLE): $(OBJECTS)
