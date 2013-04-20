@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <regex.h>
 #include "clavier.h"
 
 int syntaxeCoups(char * coups){

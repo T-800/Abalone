@@ -1,6 +1,11 @@
 #ifndef FICHIER_H_INCLUDED
 #define FICHIER_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <regex.h>
+
 /*
 Cette fonction vérifie la syntaxe des coups entré par l'utilisateur
 la taille est de min 5 et max 8 

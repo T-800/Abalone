@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "fichier.h"
-#include "plateau.h"
 
 
 int fichierConfig(char* fic, Plateau *plateau){

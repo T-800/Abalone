@@ -5,6 +5,7 @@
 int optionGlobales(char *option[], int nbArgs, Plateau *p){
 
 		int i;
+		printf("nb arg = %d\n", nbArgs);
 		for(i = 1; i<nbArgs; i++){
 			if(strcomp(option[i],"-N")){
 				if((i+1) == nbArgs){
@@ -48,6 +49,13 @@ int optionGlobales(char *option[], int nbArgs, Plateau *p){
 					int v = fichierConfig(option[i+1], p);
 
 				}
+			}
+			else if (strcomp(option[i],"-t")){
+				if( nbArgs != 2){
+					printf("l'Option -t ne prend ni argument ni autre option\n");
+					return 1;
+				}
+				
 			}
 		}	 	
 

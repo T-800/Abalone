@@ -1,6 +1,8 @@
 #ifndef PLATEAU_H_INCLUDED
 #define PLATEAU_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
 structure du plateau 
