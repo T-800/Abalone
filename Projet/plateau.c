@@ -24,6 +24,78 @@ Plateau creationPlateau(){
 }
 
 void initPlateau(Plateau *p){
+	int j =0, i = 0;/*i = la ligne et j la colonne */
+	char car = 'N';
+	
+	while (i < 9 ){
+		p->tableau[i][j] = car;
+        j++;
+        	switch (i){
+				case 0:
+					if (j >= 5 ){
+						i++;
+         	  	     	j =0;
+					}
+					break;
+				case 1:
+					if (j >= 6 ){
+						i++;
+               			j =0;
+               			car = '.';
+         	  	    }
+					break;
+				case 2:
+					if (j >= 7 ){
+						i++;
+                		j =0;
+                		car = '.';
+                	}
+                	if(j<5 && j>=2)car = 'N';
+					else car = '.';
+					break;
+				case 3:
+					if (j >= 8 ){
+						i++;
+                		j =0;
+					}
+
+					break;
+				case 4:
+					if (j >= 9 ){
+						i++;
+                		j =0;
+                	}
+					break;
+				case 5:
+					if (j >=8 ){
+						i++;
+            		    j =0;
+            		    
+            		}
+					break;
+				case 6:
+					if (j >= 7 ){
+						i++;
+            		    j =0;
+            			car = 'B';
+					}
+					else if(j<5 && j>=2)car = 'B';
+					else car = '.';
+					break;
+				case 7:
+					if (j >= 6 ){
+						i++;
+            		    j =0;
+            		}
+					break;
+				case 8:
+					if (j >= 5 ){
+						i++;
+            		    j =0;
+					}
+					break;
+			}
+    }
 	
 }
 

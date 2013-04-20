@@ -12,8 +12,9 @@ int main(int argc, char const *argv[]){
 
 	int j,i;
     Plateau p = creationPlateau();
+    initPlateau(&p);
 
-    optionGlobales(argv,argc,&p);
+    /*optionGlobales(argv,argc,&p);*/
 
 	
 	char *coups = malloc(sizeof(char)*9);
