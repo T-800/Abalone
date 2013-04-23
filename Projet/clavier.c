@@ -45,31 +45,33 @@ int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 	char substring [3] = "  ";
 	
 	if (syntaxe == 2){
-		coordonnee = malloc( sizeof(int *)  *  2);
-		coordonnee[0] = malloc( sizeof(int)  *  2);
+		coordonnee = malloc( sizeof(int *)  *  3);
+		coordonnee[0] = malloc( sizeof(int)  *  1);
 		coordonnee[1] = malloc( sizeof(int)  *  2);
-		printf("Asub1 : %s\n", substring);
+		coordonnee[2] = malloc( sizeof(int)  *  2);
+		coordonnee[0][0] = 2;
 		strncpy(substring, coups+0, 2);
-		printf("Bsub1 : %s\n", substring);
-		a1ToCoor(coordonnee[0], substring);
+		a1ToCoor(coordonnee[1], substring);
 		printf("sub1 : %s\n", substring);
 		strncpy(substring, coups+3, 2);
-		a1ToCoor(coordonnee[1], substring);
+		a1ToCoor(coordonnee[2], substring);
 		printf("sub2 : %s\n", substring);
 
 	}else if (syntaxe == 3){
-		coordonnee = malloc( sizeof(int *)  *  3);
-		coordonnee[0] = malloc( sizeof(int)  *  2);
+		coordonnee = malloc( sizeof(int *)  *  4);
+		coordonnee[0] = malloc( sizeof(int)  *  1);
 		coordonnee[1] = malloc( sizeof(int)  *  2);
 		coordonnee[2] = malloc( sizeof(int)  *  2);
+		coordonnee[3] = malloc( sizeof(int)  *  2);
+		coordonnee[0][0] = 3;
 		strncpy(substring, coups+0, 2);
-		a1ToCoor(coordonnee[0], substring);
+		a1ToCoor(coordonnee[1], substring);
 		printf("sub1 : %s\n", substring);
 		strncpy(substring, coups+3, 2);
-		a1ToCoor(coordonnee[1], substring);
+		a1ToCoor(coordonnee[2], substring);
 		printf("sub2 : %s\n", substring);
 		strncpy(substring, coups+6, 2);
-		a1ToCoor(coordonnee[2], substring);
+		a1ToCoor(coordonnee[3], substring);
 		printf("sub3 : %s\n", substring);
 	}else {
 		printf("ERROR : Syntax non valide \n");

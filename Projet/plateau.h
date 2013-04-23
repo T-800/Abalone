@@ -33,8 +33,6 @@ void affichagePlateau(Plateau *p);
 
 void affichagePlateauColor(Plateau *p, int pionX, int pionY);
 
-int coordonneesValides(char * coordonnees, Plateau *p);
-
 
 #endif 
 

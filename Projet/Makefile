@@ -1,4 +1,4 @@
-SOURCES=option.c clavier.c plateau.c fichier.c main.c
+SOURCES=option.c clavier.c plateau.c fichier.c main.c deplacement.c ia.c game.c
 OBJECTS=$(SOURCES:.c=.o)
 CFLAGS= -std=c89 -Wall -pedantic -ansi -g
 EXECUTABLE=abalone

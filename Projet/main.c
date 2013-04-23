@@ -2,23 +2,29 @@
 #include <stdlib.h>
 
 #include "plateau.h"
+
+#include "option.h"
 #include "fichier.h"
 #include "clavier.h"
-#include "option.h"
+#include "deplacement.h"
 
 int main(int argc, char const *argv[]){
 	
 
 
-	int j,i;
+	int j;
     Plateau p = creationPlateau();
+    char *coups = malloc(sizeof(char)*9);
+	int **coordonnee;
+
     initPlateau(&p);
+
+
 
     optionGlobales(argv,argc,&p);
 
 	
-	char *coups = malloc(sizeof(char)*9);
-	int **coordonnee;
+	
 
 	for(j = 0 ; j< argc; j++){
 		printf("arg % d : %s\n", j+1, argv[j]);
@@ -32,7 +38,7 @@ int main(int argc, char const *argv[]){
 
 
 	printf("\033[0m");
-	if(i==0)affichagePlateau(&p);
+	affichagePlateau(&p);
 	do{
 
 		if(scanf("%s" ,coups) == EOF){
@@ -41,7 +47,8 @@ int main(int argc, char const *argv[]){
 		/*printf("\033[2J\033[1;1H");*/
 		coordonnee = decoupageCoups(coups);
 		if (coordonnee != NULL){
-			affichagePlateauColor(&p,coordonnee[0][0],coordonnee[0][1] );
+			deplacementAutoriser(&p,coordonnee);
+			affichagePlateauColor(&p,coordonnee[1][0],coordonnee[1][1] );
 		}
 		else printf("Connard\n");
 	}while(coups[0] != 'z');

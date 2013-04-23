@@ -341,8 +341,3 @@ void affichagePlateauColor(Plateau *p, int pionX, int pionY){
 	printf("/ 7\n       ----------- \033[44m6\033[0m\n          1 \033[44m2\033[0m 3 \033[44m4\033[0m 5\n");
 
 }
-
-
-int coordonneesValides(char * coordonnees, Plateau *p){
-	return 0;
-}

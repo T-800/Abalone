@@ -2,7 +2,7 @@
 
 
 
-int optionGlobales(char *option[], int nbArgs, Plateau *p){
+int optionGlobales(char const *option[], int nbArgs, Plateau *p){
 
 		int i;
 		printf("nb arg = %d\n", nbArgs);
@@ -46,7 +46,9 @@ int optionGlobales(char *option[], int nbArgs, Plateau *p){
 					return 1;
 				}
 				else {
-					int v = fichierConfig(option[i+1], p);
+					if(fichierConfig(option[i+1], p) != 0) {
+						printf("ERREUR fichier config option.c\n");
+					}
 
 				}
 			}
@@ -64,37 +66,4 @@ int optionGlobales(char *option[], int nbArgs, Plateau *p){
 
 
 		return 0;
-}
-
-
-/*
-	Tableau de 4 cases 
-*/
-
-
-int optionNB(char *options[], Plateau *p){
-	
-	int i;
-	for(i=1; i<2; i++){
-
-		if (strcomp(options[i], "-N")){
-			if(strcomp(options[i+1],"human")){
-				p->typeBlanc = 1;
-			}
-			else {
-				p->typeBlanc = 2;	
-			}
-		}
-		else {
-			if(strcomp(options[i+1],"human")) {
-				p->typeNoir = 1;
-			}
-			else {
-				p->typeNoir = 2;	
-			}
-		}
-	}
-
-	return 0;
-
 }
