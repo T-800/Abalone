@@ -47,8 +47,8 @@ int main(int argc, char const *argv[]){
 		/*printf("\033[2J\033[1;1H");*/
 		coordonnee = decoupageCoups(coups);
 		if (coordonnee != NULL){
-			deplacementAutoriser(&p,coordonnee);
-			affichagePlateauColor(&p,coordonnee[1][0],coordonnee[1][1] );
+			if(deplacementAutoriser(&p,coordonnee)==0)deplacement2(&p,coordonnee);
+			affichagePlateau(&p);
 		}
 		else printf("Connard\n");
 	}while(coups[0] != 'z');

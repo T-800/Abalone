@@ -11,6 +11,10 @@ int deplacementAutoriser(Plateau* p, int ** coor);
 
 int ** listeDeplacements(char color);
 
+int coordonneesValides(int *coor);
+
+int deplacement2(Plateau* p, int ** coor);
+
 
 
 
