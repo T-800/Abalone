@@ -1,9 +1,14 @@
 #include "deplacement.h"
 
 
-int deplacementAutoriser(Plateau* p, int ** coor){
+int deplacementAutoriser(Plateau* p, int ** coor, char color){
 
 	int i ;
+	if(color != p->tableau[coor[1][0]][coor[1][1]]){
+		printf("%c gdgdgd %c\n",color, coor[1][0]  );
+		printf("Pas la bonne couleur\n");
+		return 1;
+	}
 	if(coor[0][0]==2){
 		printf("t2\n");
 		
@@ -139,6 +144,7 @@ int deplacementAutoriser(Plateau* p, int ** coor){
 						if(coor[2][1] == coor[1][1]+1 ||coor[2][1] == coor[1][1]){
 							printf(" COORD 013 ok\n");
 							if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+								printf("vvvvv\n");
 								return 0;
 							}
 							else {
@@ -186,6 +192,11 @@ int deplacementAutoriser(Plateau* p, int ** coor){
 	}
 	else if(coor[0][0]==3){
 		printf("T3\n");
+		
+
+
+
+		
 	}
 	else {
 		printf("ERREUR COORD\n");
@@ -227,7 +238,180 @@ int coordonneesValides(int *coor){
 }
 
 int deplacement2(Plateau* p, int ** coor){
+	printf("fff\n");
 	p->tableau[coor[2][0]][coor[2][1]] = p->tableau[coor[1][0]][coor[1][1]];
 	p->tableau[coor[1][0]][coor[1][1]] = '.';
+	printf("uytf\n");
 	return 0;
 }
+
+int* caseSuivante(Plateau *p, int *coor, int direction){
+	int i ;
+	
+	switch(coor[0][0]){
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+				printf("AAAAA\n");
+				if(coor[2][0] == coor[1][0]-1){
+		
+					if(coor[2][1] == coor[1][1]-1 ||coor[2][1] == coor[1][1]){
+						printf(" COORD 001 ok\n");
+						if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+							return 0;
+						}
+						else {
+							printf("Deplacement impossible\n");
+						}
+			
+					}else {
+						printf("ERREUR COORD 002\n");	
+					}
+			
+				}
+				else if(coor[2][0] == coor[1][0]) {
+					if(coor[2][1] == coor[1][1]-1 ||coor[2][1] == coor[1][1]+ 1){
+						printf(" COORD 003 ok\n");
+						if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+							return 0;
+						}
+						else {
+							printf("Deplacement impossible\n");
+						}
+			
+					}else {
+						printf("ERREUR COORD 004\n");	
+					}
+				}
+				else if(coor[2][0] == coor[1][0]+1) {
+					if(coor[1][1] == coor[2][1] ||coor[2][1] == coor[1][1]+ 1){
+						printf(" COORD 005 ok\n");
+						if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+							return 0;
+						}
+						else {
+							printf("Deplacement impossible\n");
+						}
+			
+					}else {
+						printf("ERREUR COORD 006\n");	
+					}
+				}
+				
+				break;
+			case 4:
+				printf("BBBBB\n");
+
+
+				
+					if(coor[2][0] == coor[1][0]-1){
+			
+						if(coor[2][1] == coor[1][1]-1 ||coor[2][1] == coor[1][1]){
+							printf(" COORD 008 ok\n");
+							if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+								return 0;
+							}
+							else {
+								printf("Deplacement impossible\n");
+							}
+				
+						}else {
+							printf("ERREUR COORD 009\n");	
+						}
+				
+					}
+					else if(coor[2][0] == coor[1][0]) {
+						if(coor[2][1] == coor[1][1]-1 ||coor[2][1] == coor[1][1]+ 1){
+							printf(" COORD 003 ok\n");
+							if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+								return 0;
+							}
+							else {
+								printf("Deplacement impossible\n");
+							}
+				
+						}else {
+							printf("ERREUR COORD 010\n");	
+						}
+					}
+					else if(coor[2][0] == coor[1][0]+1) {
+						if(coor[1][1] == coor[2][1] ||coor[2][1] == coor[1][1]- 1){
+							printf(" COORD 005 ok\n");
+							if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+								return 0;
+							}
+							else {
+								printf("Deplacement impossible\n");
+							}
+				
+						}else {
+							printf("ERREUR COORD 011\n");	
+						}
+					}
+				
+
+				
+				break;
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+				printf("CCCCCCC\n");
+				
+					if(coor[2][0] == coor[1][0]-1){
+			
+						if(coor[2][1] == coor[1][1]+1 ||coor[2][1] == coor[1][1]){
+							printf(" COORD 013 ok\n");
+							if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+								printf("vvvvv\n");
+								return 0;
+							}
+							else {
+								printf("Deplacement impossible\n");
+							}
+				
+						}else {
+							printf("ERREUR COORD 014\n");	
+						}
+				
+					}
+					else if(coor[2][0] == coor[1][0]) {
+						if(coor[2][1] == coor[1][1]-1 ||coor[2][1] == coor[1][1]+ 1){
+							printf(" COORD 015 ok\n");
+							if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+								return 0;
+							}
+							else {
+								printf("Deplacement impossible\n");
+							}
+				
+						}else {
+							printf("ERREUR COORD 016\n");	
+						}
+					}
+					else if(coor[2][0] == coor[1][0]+1) {
+						if(coor[1][1] == coor[2][1] ||coor[2][1] == coor[1][1]- 1){
+							printf(" COORD 017 ok\n");
+							if (p->tableau[coor[2][0]][coor[2][1]]=='.'){
+								return 0;
+							}
+							else {
+								printf("Deplacement impossible\n");
+							}
+				
+						}else {
+							printf("ERREUR COORD 018\n");	
+						}
+					}
+				break;
+			
+			
+		}
+}
+
+int deplacement22(Plateau *p, int *coor, int direction){
+
+}
+
+int deplaceNbBoule(int *coor)

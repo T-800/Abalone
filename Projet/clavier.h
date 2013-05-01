@@ -15,12 +15,16 @@ int verifSyntaxeCoups(char *);
 
 
 /*
-
+cette fonction decoupe le coup en tableau.
+elle prend le "string" de coup et la transforme en tableau de coordonnées 
+la 1ere ligne est la taille 2ou 3
+les lignes suivantes sont les coordonnées 
 */
 int** decoupageCoups(char *);
 
+/**/
 int regexSyntaxeCoups(char *chaineTest, char *regex);
-
+/**/
 void a1ToCoor(int *tab, char * lettre);
 
 

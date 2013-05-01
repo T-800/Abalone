@@ -3,10 +3,10 @@
 
 #include "plateau.h"
 
-#include "option.h"
-#include "fichier.h"
-#include "clavier.h"
-#include "deplacement.h"
+
+#include "game.h"
+
+
 
 int main(int argc, char const *argv[]){
 	
@@ -14,8 +14,7 @@ int main(int argc, char const *argv[]){
 
 	int j;
     Plateau p = creationPlateau();
-    char *coups = malloc(sizeof(char)*9);
-	int **coordonnee;
+   
 
     initPlateau(&p);
 
@@ -23,7 +22,8 @@ int main(int argc, char const *argv[]){
 
     optionGlobales(argv,argc,&p);
 
-	
+	/*gameTest(&p);*/
+	gameTest(&p);
 	
 
 	for(j = 0 ; j< argc; j++){
@@ -33,25 +33,6 @@ int main(int argc, char const *argv[]){
 	printf("NOIR type : %d\n",p.typeNoir);
 	
 
-	
-
-
-
-	printf("\033[0m");
-	affichagePlateau(&p);
-	do{
-
-		if(scanf("%s" ,coups) == EOF){
-			return 1;
-		}
-		/*printf("\033[2J\033[1;1H");*/
-		coordonnee = decoupageCoups(coups);
-		if (coordonnee != NULL){
-			if(deplacementAutoriser(&p,coordonnee)==0)deplacement2(&p,coordonnee);
-			affichagePlateau(&p);
-		}
-		else printf("Connard\n");
-	}while(coups[0] != 'z');
 	
     return 0;
 }
