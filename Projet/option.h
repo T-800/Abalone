@@ -6,8 +6,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "plateau.h"
+
 #include "fichier.h"
+#include "plateau.h"
 
 #define strcomp(arg1,arg2) (strcmp(arg1,arg2)==0)
 

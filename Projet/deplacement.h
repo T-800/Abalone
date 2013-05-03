@@ -6,22 +6,32 @@
 #include "plateau.h"
 #include "clavier.h"
 
-/*cette fonction verifie que le deplavement donné en argument est possible*/
-int deplacementAutoriser(Plateau* p, int ** coor, char);
 
-/*cette foction renvoi tout les deplacement possible pour un joureur */
-int ** listeDeplacements(char color);
+/*Renvoi le nombre de boule a deplacer pour la meme couleur*/
+int nbBouleDeplace(Plateau *p, int **coor);
 
-/**/
-int coordonneesValides(int *coor);
+/*renvoi les coordonnées de la case suivante null si en dehors du plateau*/
+int* caseSuivant(Plateau *p, int *coor, int direction);
 
-int deplacement2(Plateau* p, int ** coor);
+/*deplace une boule */
+int deplaceBoule(Plateau *p, int *depart, int *arrivee);
 
-int caseSuivante(Plateau *p, int *coor, int direction);
+/*affiche les codes erreurs*/
+void codeErreur(int code);
+
+/*fonction gobale du deplacement*/
+int deplacement(Plateau *p, int **coor);
 
 
+/*int coordonneesValides(int coorA, int corrB);*/
 
 
+int direction(int *depart,int  *arrivee);
+
+int directionBoules(int **coor);
+
+/*fonction qui liste tout les deplacements possible d'une couleur */
+char** listeToutDeplacement(Plateau *p, char color);
 
 
 

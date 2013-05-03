@@ -3,7 +3,7 @@
 
 #include "plateau.h"
 
-
+#include "option.h"
 #include "game.h"
 
 
@@ -11,8 +11,7 @@
 int main(int argc, char const *argv[]){
 	
 
-
-	int j;
+	int mode; /*1 joueur 2 test*/
     Plateau p = creationPlateau();
    
 
@@ -20,17 +19,14 @@ int main(int argc, char const *argv[]){
 
 
 
-    optionGlobales(argv,argc,&p);
-
-	/*gameTest(&p);*/
-	gameTest(&p);
-	
-
-	for(j = 0 ; j< argc; j++){
-		printf("arg % d : %s\n", j+1, argv[j]);
-	}
-	printf("BLANC type : %d\n",p.typeBlanc);
-	printf("NOIR type : %d\n",p.typeNoir);
+    mode = optionGlobales(argv,argc,&p);
+    if (mode==2){
+    	gameTest(&p);
+    }
+    else if (mode ==0){
+    	
+    	gamePIA(&p);
+    }
 	
 
 	

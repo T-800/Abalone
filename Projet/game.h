@@ -5,7 +5,7 @@
 #include "option.h"
 #include "fichier.h"
 #include "clavier.h"
-#include "deplacement2.h"
+#include "deplacement.h"
 
 
 #ifdef __APPLE__

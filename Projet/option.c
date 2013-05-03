@@ -57,6 +57,9 @@ int optionGlobales(char const *option[], int nbArgs, Plateau *p){
 					printf("l'Option -t ne prend ni argument ni autre option\n");
 					return 1;
 				}
+				else{
+					return 2;
+				}
 				
 			}
 		}	 	

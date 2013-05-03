@@ -1,0 +1,16 @@
+TODO :
+
+deplacement plusieurs boules 
+liste de tout les coups possibles (backtracking)
+IA
+finir lecture fichier config 
+sauvegarde
+(option a finir)
+
+
+
+
+===========
+EN PLUS : 
+===========
+(IA Min/Max) 

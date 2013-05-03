@@ -1,66 +1,88 @@
 #include "game.h"
 
 
-int gameTest(Plateau *p){
+int gameTest(Plateau *p){ /*FINI*/
 	 char *coups = malloc(sizeof(char)*9);
 	int **coordonnee;
 	affichagePlateau(p);
 
-	do{
-
-		if(scanf("%s" ,coups) == EOF){
-			return 1;
-		}
-		
+	while(scanf("%s" ,coups) != EOF){
 		clear();
 		coordonnee = decoupageCoups(coups);
 		if (coordonnee != NULL){
-			printf("00000\n");
-			if(/*deplacementAutoriser(p,coordonnee)==0*/1){
-				printf("1111\n");
-				deplacement(p,coordonnee);
-				printf("452313\n");
-			}
+			deplacement(p,coordonnee);
 			affichagePlateau(p);
 		}
-		else printf("Connard\n");
-	}while(coups[0] != 'z');
+		else printf("coups invalide\n");
+	};
 	exit(0);
 }
 
-/*int gamePIA(Plateau *p){
+int gamePIA(Plateau *p){
 	int tour =0;
 	char *coups = malloc(sizeof(char)*9);
 	int **coordonnee;
 
 	affichagePlateau(p);
+
 	while(p->billesBlachesperdues < 6 && p->billesNoiresperdues < 6){
-		scanf("%s" ,coups);
-		coordonnee = decoupageCoups(coups);
-		if (coordonnee != NULL){
-			switch(tour%2){
+		
+		switch(tour%2){
 			case 0 :
-				if(deplacementAutoriser(p,coordonnee,'N')==0){
-					printf("1111\n");
-					deplacement2(p,coordonnee);
-					printf("TOUR BLANC\n");
+				printf("\n\nTOUR BLANC\n\n");
+				if (p->typeBlanc == 1){/* IA*/
+					printf("IA\n");
 				}
+				else  { /*HUMAIN*/
+					printf("HUMAIN\n");
+					scanf("%s" ,coups);
+					coordonnee = decoupageCoups(coups);
+					if (coordonnee != NULL){
+						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='B'){
+							deplacement(p,coordonnee);
+						}else{
+							printf("ERREUR Tu ne peux pas deplacer ce pion\n");
+							tour--;
+						}
+						
+					}
+					else{
+						printf("coordonnées INVALIDE\n");
+						tour--;
+					}
+				}
+				tour++;
+
 			
 				break;
 			case 1 : 
-				if(deplacementAutoriser(p,coordonnee,'B')==0){
-					printf("1111\n");
-					deplacement2(p,coordonnee);
-					printf("452313\n");
-					printf("TOUR NOIR\n");
+				printf("\n\nTOUR NOIR\n");
+				if (p->typeNoir == 1){/* IA*/
+					printf("IA\n");
 				}
+				else  { /*HUMAIN*/
+					printf("HUMAIN\n");
+					scanf("%s" ,coups);
+					coordonnee = decoupageCoups(coups);
+					if (coordonnee != NULL){
+						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='N'){
+							deplacement(p,coordonnee);
+						}else{
+							printf("ERREUR Tu ne peux pas deplacer ce pion\n");
+							tour--;
+						}
+						
+					}
+					else{
+						printf("coordonnées INVALIDE\n");
+						tour--;
+					}
+				}
+				tour++;
 				
 				break;
-			}
-			affichagePlateau(p);
 		}
-		else printf("Connard\n");
-
-		
+		clear();
+		affichagePlateau(p);	
 	}
-}*/
+}

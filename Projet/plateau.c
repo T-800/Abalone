@@ -25,6 +25,8 @@ void initPlateau(Plateau *p){
 	int j =0, i = 0;/*i = la ligne et j la colonne */
 	char car = 'N';
 	
+	p->typeBlanc = 2;
+	p->typeNoir = 2;
 	while (i < 9 ){
 		p->tableau[i][j] = car;
         j++;
