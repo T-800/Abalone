@@ -114,3 +114,36 @@ int fichierConfig(const char* fic, Plateau *plateau){
     }
         
 }
+
+
+int sauvegarde(char* fic, Plateau *plateau){
+    FILE *fichier = NULL;
+    int i=0,j=0;
+    char text1[20];
+    char text2[20];
+    char *p1,*p2;
+    
+    fichier = fopen(fic, "w");
+    
+    fputc(plateau->JoueurSuivant,fichier);
+    sprintf(text1, "%d", plateau->billesBlachesperdues);
+    sprintf(text2, "%d", plateau->billesNoiresperdues);
+    p1 = text1;
+    p2 = text2;
+    
+    fputs(p1, fichier);
+    fputs(p2, fichier);
+    
+    fputc( '\n' ,fichier);
+    
+    for(i = 0; i < 9; i++){
+        for (j = 0; j < strlen(plateau->tableau[i]);j++){
+            fputc( plateau->tableau[i][j],fichier);
+            fputc( 32 ,fichier);
+        }
+        fputc( '\n' ,fichier);
+    }
+    fclose(fichier);
+    
+    return 0;
+}
