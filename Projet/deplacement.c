@@ -152,6 +152,9 @@ void codeErreur(int code){
 		case 3:
 			printf("coordonnées non valide\n" );
 			break;
+		case 4:
+			printf("case suivante NON VIDE (deplace 2 boule)\n" );
+			break;
 	}
 
 	return;
@@ -159,18 +162,20 @@ void codeErreur(int code){
 
 /*fonction gobale du deplacement*/
 int deplacement(Plateau *p, int **coor){
-	
-	int *caseSuiv;
-	int dir;
+	char couleur;
+	int *caseSuivDir, caseSuivBoule;
+	int dirBoule, dirDep;
+
+	couleur = p->tableau[coor[1][0]][coor[1][1]];
 
 	switch(nbBouleDeplace(p,coor)){
 		case 1:
-			dir = direction(coor[1],coor[2]);
-			caseSuiv = caseSuivant(p,coor[1], dir);
+			dirDep = direction(coor[1],coor[2]);
+			caseSuivDir = caseSuivant(p,coor[1], dirDep);
 			/*printf("arrivee %d %d\n",caseSuiv[0], caseSuiv[1] );*/
-			if(caseSuiv != NULL){
-				if(p->tableau[caseSuiv[0]][caseSuiv[1]] == '.'){
-					deplaceBoule(p,coor[1], caseSuiv);
+			if(caseSuivDir != NULL){
+				if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
+					deplaceBoule(p,coor[1], caseSuivDir);
 					return 0;
 				}else {
 					codeErreur(2); /*case suivante NON VIDE (deplace 1 boule)*/
@@ -185,9 +190,72 @@ int deplacement(Plateau *p, int **coor){
 
 			break;
 		case 2:/*si on deplace 2 boules*/
-			caseSuiv = caseSuivant(p,coor[1], direction(coor[1],coor[3]));
-			printf("arrivee %d %d\n",caseSuiv[0], caseSuiv[1] );
+			
+			dirBoule = direction(coor[1],coor[2]);
+			dirDep = direction(coor[1],coor[3]);
 
+			if(couleur != p->tableau[coor[2][0]][coor[2][1]]){
+				printf("err couleur \n");
+				return -1;
+			}
+
+
+			if (dirDep == dirBoule){
+				caseSuivDir = caseSuivant(p,coor[2], dirDep);
+				if(caseSuivDir != NULL){
+					if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
+						deplaceBoule(p,coor[2], caseSuivDir);
+						deplaceBoule(p,coor[1], coor[2]);
+					}
+					else if (couleur != p->tableau[caseSuivDir[0]][caseSuivDir[1]]){
+						int * caseADeplacerD = caseSuivant(p,caseSuivDir, dirDep);
+						if (caseADeplacerD != NULL){
+							if(p->tableau[caseADeplacerD[0]][caseADeplacerD[1]] == '.'){
+								deplaceBoule(p,caseSuivDir, caseADeplacerD);
+
+								deplaceBoule(p,coor[2], caseSuivDir);
+								deplaceBoule(p,coor[1], coor[2]);
+							}
+							else {
+								codeErreur(4); /*case suivante NON VIDE (deplace 1 boule)*/
+								return -1;
+							}	
+						}
+						else{
+							deplaceBoule(p,coor[2], caseSuivDir);
+							deplaceBoule(p,coor[1], coor[2]);
+						}
+						
+					}
+				}
+			}
+			else{
+
+			}
+			
+
+
+
+			/*
+			si la direction des boules == direction deplacement 		x
+				si la case apres la derniere boule existe   			x
+					si case vide 										x
+						je deplace 2 boules 							x
+					sinon si couleur differente
+						si case apres existe
+							si vide 
+								deplace 
+							sinon 
+								err
+						sinon 
+							boule tombe 
+					sinon 
+						err
+				sinon
+					err
+			sinon
+
+			*/
 
 			
 

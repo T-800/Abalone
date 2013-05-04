@@ -25,7 +25,7 @@ int gamePIA(Plateau *p){
 
 	affichagePlateau(p);
 
-	while(p->billesBlachesperdues < 6 && p->billesNoiresperdues < 6){
+	while(/*p->billesBlachesperdues < 6 && p->billesNoiresperdues < 6*/1){
 		
 		switch(tour%2){
 			case 0 :

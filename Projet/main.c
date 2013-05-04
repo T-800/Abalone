@@ -27,6 +27,9 @@ int main(int argc, char const *argv[]){
     	
     	gamePIA(&p);
     }
+    else{
+        printf("ERROR\n");
+    }
 	
 
 	
