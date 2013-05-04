@@ -9,7 +9,7 @@ structure du plateau
 */
 typedef struct {
     char **tableau;
-    int billesBlachesperdues;
+    int billesBlanchesperdues;
     int billesNoiresperdues;
     char JoueurSuivant;
     int typeBlanc ;
