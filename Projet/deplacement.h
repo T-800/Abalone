@@ -1,5 +1,5 @@
-#ifndef FICHIER_H_INCLUDED
-#define FICHIER_H_INCLUDED
+#ifndef DEPLACEMENT_H_INCLUDED
+#define DEPLACEMENT_H_INCLUDED
 
 #include <stdio.h>
 #include <stdlib.h>

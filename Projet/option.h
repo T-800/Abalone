@@ -1,5 +1,5 @@
-#ifndef FICHIER_H_INCLUDED	
-#define FICHIER_H_INCLUDED
+#ifndef OPTION_H_INCLUDED	
+#define OPTION_H_INCLUDED
 
 
 

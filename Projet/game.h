@@ -1,5 +1,5 @@
-#ifndef FICHIER_H_INCLUDED
-#define FICHIER_H_INCLUDED
+#ifndef GAME_H_INCLUDED
+#define GAME_H_INCLUDED
 
 #include "plateau.h"
 #include "option.h"

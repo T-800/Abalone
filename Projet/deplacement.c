@@ -229,7 +229,7 @@ int deplacement(Plateau *p, int **coor){
 char** listeToutDeplacement(Plateau *p, char color);
 
 int directionBoules(int **coor){
-
+	return 0;
 }
 
 

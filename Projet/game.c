@@ -85,4 +85,5 @@ int gamePIA(Plateau *p){
 		clear();
 		affichagePlateau(p);	
 	}
+	return 0;
 }

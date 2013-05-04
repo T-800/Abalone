@@ -1,7 +1,7 @@
 #include "fichier.h"
 
 
-int fichierConfig(char* fic, Plateau *plateau){
+int fichierConfig(const char* fic, Plateau *plateau){
     FILE *fichier = NULL;
     char caractereActuel;
     int compteurCharFichier=0,compteauCharPlateau =0;
