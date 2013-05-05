@@ -15,6 +15,7 @@ int gameTest(Plateau *p){ /*FINI*/
 		}
 		else printf("coups invalide\n");
 	};
+	sauvegarde("test.txt", p);
 	exit(0);
 }
 

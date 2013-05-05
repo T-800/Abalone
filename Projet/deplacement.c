@@ -155,6 +155,9 @@ void codeErreur(int code){
 		case 4:
 			printf("case suivante NON VIDE (deplace 2 boule)\n" );
 			break;
+		case 5:
+			printf("case suivante NULL (deplace 1 boule)\n" );
+			break;
 	}
 
 	return;
@@ -198,6 +201,19 @@ int deplacement(Plateau *p, int **coor){
 				printf("err couleur \n");
 				return -1;
 			}
+			if(dirDep != dirBoule && (dirDep % 3 == dirBoule % 3)){
+
+				int *coor2 = coor[1];
+				coor[1] = coor[2];
+				coor[2] = coor2;
+				printf("test1\n");
+
+				/*return deplacement(p,coor);*/
+
+				
+				printf("test2\n");
+
+			}
 
 
 			if (dirDep == dirBoule){
@@ -224,14 +240,19 @@ int deplacement(Plateau *p, int **coor){
 						else{
 							deplaceBoule(p,coor[2], caseSuivDir);
 							deplaceBoule(p,coor[1], coor[2]);
-						}
-						
+						}	
 					}
+					else {
+						codeErreur(4); /*case suivante NON VIDE (deplace 1 boule)*/
+						return -1;
+					}	
+				}else {
+					codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
+					return -1;
 				}
 			}
-			else{
-
-			}
+			else
+			
 			
 
 
