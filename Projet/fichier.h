@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "plateau.h"
+#include <string.h>
 
 /*
 Cette fonction initialise le plateau.

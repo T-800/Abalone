@@ -180,7 +180,24 @@ int deplacement(Plateau *p, int **coor){
 				if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
 					deplaceBoule(p,coor[1], caseSuivDir);
 					return 0;
-				}else {
+				}
+				else if (p->tableau[caseSuivDir[0]][caseSuivDir[1]] == couleur){/*Case suivante est de la meme couleur apel recursif*/
+					int ** coordonnee = malloc( sizeof(int *)  *  4);
+					coordonnee[0] = malloc( sizeof(int)  *  1);
+					coordonnee[1] = malloc( sizeof(int)  *  2);
+					coordonnee[2] = malloc( sizeof(int)  *  2);
+					coordonnee[3] = malloc( sizeof(int)  *  2);
+
+					coordonnee[0] = coor[0]+1;
+					coordonnee[1] = coor[1];
+					coordonnee[2] = caseSuivDir;
+					coordonnee[3] = coor[2];
+
+					deplacement(p,coordonnee);
+					/*return 0;*/
+					/* code */
+				}
+				else {
 					codeErreur(2); /*case suivante NON VIDE (deplace 1 boule)*/
 					return -1;
 				}
@@ -210,7 +227,6 @@ int deplacement(Plateau *p, int **coor){
 
 				/*return deplacement(p,coor);*/
 
-				
 				printf("test2\n");
 
 			}
@@ -251,7 +267,32 @@ int deplacement(Plateau *p, int **coor){
 					return -1;
 				}
 			}
-			else
+			else{
+				int ** boule1 = malloc( sizeof(int *)  *  3);
+				boule1[0] = malloc( sizeof(int)  *  1);
+				boule1[1] = malloc( sizeof(int)  *  2);
+				boule1[2] = malloc( sizeof(int)  *  2);
+
+				boule1[0][0] = 2;
+				boule1[1] = coor[1];
+				boule1[2] = coor[3];
+
+				
+				int ** boule2 = malloc( sizeof(int *)  *  3);
+				boule2[0] = malloc( sizeof(int)  *  1);
+				boule2[1] = malloc( sizeof(int)  *  2);
+				boule2[2] = malloc( sizeof(int)  *  2);
+
+
+				boule2[0][0] = 2;
+				boule2[1] = coor[2];
+				boule2[2] = caseSuivant(p,coor[2], dirDep);
+
+				deplacement(p,boule1);
+				deplacement(p,boule2);
+
+				
+			}
 			
 			
 

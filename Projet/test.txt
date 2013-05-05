@@ -1,10 +1,10 @@
-Z
-NNNNN
-NNNNNN
-...NN..
-........
-..N......
-........
-..BBB..
-BBBBBB
-BBBBB
+Z00
+N N N N N 
+N N N N N N 
+. . . N N . . 
+. . . . . . . . 
+. . N . . . . . . 
+. . . . . . . . 
+. . B B B . . 
+B B B B B B 
+B B B B B 
