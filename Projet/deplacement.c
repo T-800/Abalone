@@ -4,10 +4,19 @@
 
 /*Renvoi le nombre de boule a deplacer pour la meme couleur*/
 int nbBouleDeplace(Plateau *p, int **coor){
+	
+
+
 	if (coor[0][0]==2){
 		return 1;
 	}else {/* A finir */
-		return 2;
+		int dirBoules = direction(coor[1],coor[3]);
+		int *caseSuivBoules = caseSuivant(p,coor[1], dirBoules);
+		if (caseSuivBoules[0] == coor[2][0] && caseSuivBoules[1] == coor[2][1]){
+			return 2;
+			
+		}
+		return 3;
 	}
 }
 
@@ -166,7 +175,7 @@ void codeErreur(int code){
 /*fonction gobale du deplacement*/
 int deplacement(Plateau *p, int **coor){
 	char couleur;
-	int *caseSuivDir, caseSuivBoule;
+	int *caseSuivDir;/* caseSuivBoule;*/
 	int dirBoule, dirDep;
 
 	couleur = p->tableau[coor[1][0]][coor[1][1]];
@@ -259,16 +268,21 @@ int deplacement(Plateau *p, int **coor){
 						}	
 					}
 					else {
-						codeErreur(4); /*case suivante NON VIDE (deplace 1 boule)*/
-						return -1;
+						printf("buguozhuo\n");
+						coor[2] = caseSuivDir;
+						deplacement(p,coor);
+
+						/*codeErreur(4); /*case suivante NON VIDE (deplace 1 boule)*/
+						/*return -1;*/
 					}	
 				}else {
 					codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
 					return -1;
 				}
 			}
-			else{
-				int ** boule1 = malloc( sizeof(int *)  *  3);
+			else{	
+				int ** boule1, **boule2;
+				boule1 = malloc( sizeof(int *)  *  3);
 				boule1[0] = malloc( sizeof(int)  *  1);
 				boule1[1] = malloc( sizeof(int)  *  2);
 				boule1[2] = malloc( sizeof(int)  *  2);
@@ -278,7 +292,7 @@ int deplacement(Plateau *p, int **coor){
 				boule1[2] = coor[3];
 
 				
-				int ** boule2 = malloc( sizeof(int *)  *  3);
+				boule2 = malloc( sizeof(int *)  *  3);
 				boule2[0] = malloc( sizeof(int)  *  1);
 				boule2[1] = malloc( sizeof(int)  *  2);
 				boule2[2] = malloc( sizeof(int)  *  2);
@@ -323,6 +337,7 @@ int deplacement(Plateau *p, int **coor){
 
 			break;
 		case 3: /*si on en deplace 3*/
+			printf("DEPLACEMENT 3 BOULES\n");
 			break;
 	}
 	return 0;
