@@ -7,6 +7,8 @@
 #include "clavier.h"
 #include "deplacement.h"
 
+#define strcomp(arg1,arg2) (strcmp(arg1,arg2)==0)
+
 
 #ifdef __APPLE__
 	#define s() printf("APPLE \n\n");

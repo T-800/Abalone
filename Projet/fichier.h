@@ -12,6 +12,6 @@ elle est appelé avec l'otopn -c donnée au programme
 */
 int fichierConfig(const char* fic, Plateau *plateau);
 
-int sauvegarde(char* fic,Plateau *plateau);
+int sauvegarde(Plateau *plateau);
 
 #endif

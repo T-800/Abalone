@@ -3,12 +3,10 @@ TODO :
 ***Hamza***
 liste de tout les coups possibles (backtracking)
 IA
-sauvegarde
 
 
 ***Renaud***
-deplacement plusieurs boules 
-finir lecture fichier config 
+deplacement plusieurs boules
 option debug
 
 

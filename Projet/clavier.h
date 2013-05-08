@@ -6,6 +6,8 @@
 #include <string.h>
 #include <regex.h>
 
+#define strcomp(arg1,arg2) (strcmp(arg1,arg2)==0)
+
 /*
 Cette fonction vérifie la syntaxe des coups entré par l'utilisateur
 la taille est de min 5 et max 8 

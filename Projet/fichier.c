@@ -79,12 +79,12 @@ int fichierConfig(const char* fic, Plateau *plateau){
                 printf("Le joueur suivant est le %c\n",plateau->JoueurSuivant);
             }
             else if(compteurCharFichier == 1){
-                plateau->billesBlachesperdues = caractereActuel;
+                plateau->billesBlachesperdues = caractereActuel-48;
                 printf("bille blanche %d\n",plateau->billesBlachesperdues);
                 compteurCharFichier++;
             }
             else if(compteurCharFichier == 2){
-                plateau->billesNoiresperdues = caractereActuel;
+                plateau->billesNoiresperdues = caractereActuel-48;
                 printf("bille Noires %d\n",plateau->billesNoiresperdues);
                 compteurCharFichier++;
             }
@@ -116,14 +116,17 @@ int fichierConfig(const char* fic, Plateau *plateau){
 }
 
 
-int sauvegarde(char* fic, Plateau *plateau){
+int sauvegarde(Plateau *plateau){
     FILE *fichier = NULL;
     int i=0,j=0;
     char text1[20];
     char text2[20];
     char *p1,*p2;
+    char nomFichier[50];
+    printf("Entrez le nom du fichier\n");
+    scanf("%s" ,nomFichier);
     
-    fichier = fopen(fic, "w");
+    fichier = fopen(nomFichier, "w");
     
     fputc(plateau->JoueurSuivant,fichier);
     sprintf(text1, "%d", plateau->billesBlachesperdues);

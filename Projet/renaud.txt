@@ -1,0 +1,10 @@
+N4848
+N N N N N 
+N N N N N N 
+. . N N N . . 
+. . . . . . . . 
+B B B . . . . . . 
+. . . . . . . . 
+. . . . . . . 
+B B B B B B 
+B B B B B 

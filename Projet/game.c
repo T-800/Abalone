@@ -15,7 +15,7 @@ int gameTest(Plateau *p){ /*FINI*/
 		}
 		else printf("coups invalide\n");
 	};
-	sauvegarde("test.txt", p);
+	sauvegarde(p);
 	exit(0);
 }
 
@@ -37,6 +37,17 @@ int gamePIA(Plateau *p){
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
 					scanf("%s" ,coups);
+					if (strcomp(coups,"SAVE")||strcomp(coups,"save")){	
+						sauvegarde(p);
+						printf("Continuer à jouer ? [Y/n]\n");
+						char continueJouer;
+						scanf("%s" ,&continueJouer);
+						if (continueJouer == 'y' || continueJouer == 'Y'){
+							scanf("%s" ,coups);
+						}
+						else return -1;
+					}
+
 					coordonnee = decoupageCoups(coups);
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='B'){
@@ -64,6 +75,16 @@ int gamePIA(Plateau *p){
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
 					scanf("%s" ,coups);
+					if (strcomp(coups,"SAVE")||strcomp(coups,"save")){	
+						sauvegarde(p);
+						printf("Continuer à jouer ? [Y/n]\n");
+						char continueJouer;
+						scanf("%s" ,&continueJouer);
+						if (continueJouer == 'y' || continueJouer == 'Y'){
+							scanf("%s" ,coups);
+						}
+						else return -1;
+					}
 					coordonnee = decoupageCoups(coups);
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='N'){

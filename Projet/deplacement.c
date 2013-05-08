@@ -271,9 +271,6 @@ int deplacement(Plateau *p, int **coor){
 						printf("buguozhuo\n");
 						coor[2] = caseSuivDir;
 						deplacement(p,coor);
-
-						/*codeErreur(4); /*case suivante NON VIDE (deplace 1 boule)*/
-						/*return -1;*/
 					}	
 				}else {
 					codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
@@ -338,6 +335,8 @@ int deplacement(Plateau *p, int **coor){
 			break;
 		case 3: /*si on en deplace 3*/
 			printf("DEPLACEMENT 3 BOULES\n");
+
+
 			break;
 	}
 	return 0;
