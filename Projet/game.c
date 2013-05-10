@@ -10,7 +10,7 @@ int gameTest(Plateau *p){ /*FINI*/
 		clear();
 		coordonnee = decoupageCoups(coups);
 		if (coordonnee != NULL){
-			deplacement(p,coordonnee,p->tableau[coordonnee[1][0]][coordonnee[1][0]]);
+			deplacement(p,coordonnee,p->tableau[coordonnee[1][0]][coordonnee[1][0]],0);
 			affichagePlateau(p);
 		}
 		else printf("coups invalide\n");
@@ -54,7 +54,7 @@ int gamePIA(Plateau *p){
 					printf("egegrgrgrgrgr\n");
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='B'){
-							if ( deplacement(p,coordonnee,'B') !=-1 ){
+							if ( deplacement(p,coordonnee,'B',0) !=-1 ){
 							 	/* code */
 							 }
 							 else {
@@ -98,7 +98,7 @@ int gamePIA(Plateau *p){
 					coordonnee = decoupageCoups(coups);
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='N'){
-							if ( deplacement(p,coordonnee,'N') !=-1 ){
+							if ( deplacement(p,coordonnee,'N',0) !=-1 ){
 							 	/* code */
 							 }
 							 else {

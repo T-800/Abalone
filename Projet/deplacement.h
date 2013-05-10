@@ -20,7 +20,7 @@ int deplaceBoule(Plateau *p, int *depart, int *arrivee);
 void codeErreur(int code);
 
 /*fonction gobale du deplacement*/
-int deplacement(Plateau *p, int **coor,char couleur);
+int deplacement(Plateau *p, int **coor,char couleur, int list);
 
 
 int coordonneesValides(int coorA, int corrB);
