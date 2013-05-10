@@ -11,9 +11,7 @@ int nbBouleDeplace(Plateau *p, int **coor){
 	if (coor[0][0]==2){
 		return 1;
 	}else {/* A finir */
-		printf("razazazazazazaz\n");
 		int dirBoules = direction(coor[1],coor[3]);
-		printf("pmpmppppppppp %d \n",dirBoules);
 		int *caseSuivBoules = caseSuivant(p,coor[1], dirBoules);
 		if (dirBoules!=-1 ){
 			if(caseSuivBoules[0] == coor[2][0] && caseSuivBoules[1] == coor[2][1]){
@@ -25,7 +23,24 @@ int nbBouleDeplace(Plateau *p, int **coor){
 	}
 }
 
+<<<<<<< HEAD
 /*renvoi les coordonnées de la case suivante null si en dehors du plateau*/
+=======
+int destDeplacement(Plateau *p,int *dep,int *arr){
+	int i;
+
+	for (i = 0; i < 6; i++){
+		int *caseSuiv=caseSuivant(p, dep, i);
+		if (caseSuiv[0]==arr[0] && caseSuiv[1]==arr[1]){
+			return 0;
+			printf("rfrfrfrfrfrfr\n");
+		}
+	}
+	return -1;
+}
+
+/*renvoi les coordonnées de la case suivante, null si en dehors du plateau*/
+>>>>>>> 4b7e6b406a57f20dd9056ecccf69d0dc629668b7
 int* caseSuivant(Plateau *p, int *coor, int direction){
 	int *casuiv = malloc((sizeof(int)*2));
 	casuiv[0] = -1;
@@ -258,10 +273,6 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 					return -1;
 				}
 
-			if(couleur != p->tableau[coor[2][0]][coor[2][1]]){
-				printf("err couleur \n");
-				return -1;
-			}
 
 				if (dirDep == dirBoule){
 					caseSuivDir = caseSuivant(p,coor[2], dirDep);
@@ -360,12 +371,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 				}
 
 
-				boule2[0][0] = 2;
-				boule2[1] = coor[2];
-				boule2[2] = caseSuivant(p,coor[2], dirDep);
 
-				deplacement(p,boule1,couleur);
-				deplacement(p,boule2,couleur);
 
 			}else {
 				printf("Direction deplacement/Boule IMPOSSIBLE (2 boules)\n");
@@ -401,10 +407,6 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 								deplaceBoule(p,coor[1], coor[3]);
 							}
 						
-						deplaceBoule(p,coor[2], caseSuivDir);
-						caseSuivDir = caseSuivant(p,coor[1], dirDep);
-						deplaceBoule(p,caseSuivDir, coor[2]);
-						deplaceBoule(p,coor[1], coor[3]);
 					}
 					else if (p->tableau[caseSuivDir[0]][caseSuivDir[1]] == couleur){
 						codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
