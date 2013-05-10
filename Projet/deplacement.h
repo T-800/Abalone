@@ -6,6 +6,7 @@
 #include <time.h>  
 #include "plateau.h"
 #include "clavier.h"
+#include "ia.h"
 
 
 /*Renvoi le nombre de boule a deplacer pour la meme couleur*/

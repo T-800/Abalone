@@ -2,6 +2,7 @@
 
 
 
+
 /*Renvoi le nombre de boule a deplacer pour la meme couleur*/
 int nbBouleDeplace(Plateau *p, int **coor){
 
@@ -194,7 +195,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 				if(caseSuivDir != NULL){
 					if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
 						if (list==1){
-							/*addToListe(coor);*/
+							addToList(coor);
 						}
 						else {
 							deplaceBoule(p,coor[1], caseSuivDir);
@@ -261,7 +262,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 					if(caseSuivDir != NULL){
 						if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
 							if (list==1){
-								/*addToListe(coor);*/
+								addToList(coor);
 							}
 							else {
 								deplaceBoule(p,coor[2], caseSuivDir);
@@ -275,7 +276,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 							if (caseADeplacerD != NULL){
 								if(p->tableau[caseADeplacerD[0]][caseADeplacerD[1]] == '.'){
 									if (list==1){
-										/*addToListe(coor);*/
+										addToList(coor);
 									}
 									else {
 										deplaceBoule(p,caseSuivDir, caseADeplacerD);
@@ -293,7 +294,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 							}
 							else{
 								if (list==1){
-									/*addToListe(coor);*/
+									addToList(coor);
 								}
 								else {
 									deplaceBoule(p,coor[2], caseSuivDir);
@@ -380,7 +381,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 				if(caseSuivDir != NULL){
 					if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
 							if (list==1){
-								/*addToListe(coor);*/
+								addToList(coor);
 							}
 							else {
 								deplaceBoule(p,coor[2], caseSuivDir);
@@ -399,7 +400,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 						if(caseSuivDir2 != NULL){
 							if(p->tableau[caseSuivDir2[0]][caseSuivDir2[1]] == '.'){
 								if (list==1){
-									/*addToListe(coor);*/
+									addToList(coor);
 								}
 								else {
 									deplaceBoule(p,caseSuivDir, caseSuivDir2);
@@ -420,7 +421,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 								if(caseSuivDir3 != NULL){
 									if(p->tableau[caseSuivDir3[0]][caseSuivDir3[1]] == '.'){
 										if (list==1){
-											/*addToListe(coor);*/
+											addToList(coor);
 										}
 										else {
 											deplaceBoule(p,caseSuivDir2, caseSuivDir3);
@@ -440,7 +441,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 								else {
 
 									if (list==1){
-										/*addToListe(coor);*/
+										addToList(coor);
 									}
 									else {
 										deplaceBoule(p,caseSuivDir, caseSuivDir2);
@@ -759,6 +760,7 @@ int coupsPossible(Plateau *p, int *coord_depart, char couleur){
     return 0;
     
 }
+
 
 
 /*

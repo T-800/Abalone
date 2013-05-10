@@ -3,6 +3,7 @@
 
 #include "deplacement.h"
 
+int *** coupsPossibles;
 void play(char color,Plateau *p);
 void addToList(int ** coor);
 void IA(Plateau *p, char couleur);
