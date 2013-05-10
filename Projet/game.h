@@ -6,6 +6,7 @@
 #include "fichier.h"
 #include "clavier.h"
 #include "deplacement.h"
+#include "ia.h"
 
 #define strcomp(arg1,arg2) (strcmp(arg1,arg2)==0)
 

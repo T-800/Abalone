@@ -455,13 +455,13 @@ int directionBoules(int **coor){
 
 int direction(int *depart, int *arrivee){
 
-	printf("/* direction deplacement */\n");
+	/*printf("START direction deplacement \n");
 
 	printf("depart 0 %d, depart 1 %d\n", depart[0],depart[1]);
 	printf("arrivee 0 %d, arrivee 1 %d\n", arrivee[0],arrivee[1]);
 
 
-	printf("/* direction deplacement */\n");
+	printf("direction deplacement FIN\n");*/
 
 
 	switch(depart[0]){
@@ -469,18 +469,18 @@ int direction(int *depart, int *arrivee){
 		case 1 :
 		case 2 :
 		case 3 :
-			printf("case -4\n");			
+			/*printf("case -4\n");*/			
 			if (depart[0]+1==arrivee[0] && depart[1]+1==arrivee[1]){
-				printf("dir 0");			
+				/*printf("dir 0");			*/
 				return 0;
 			}
 
 			else if (depart[0]+1==arrivee[0] && depart[1]==arrivee[1]){
-				printf("dir 1\n");			
+				/*printf("dir 1\n");			*/
 				return 1;
 			}
 			else if (depart[0]==arrivee[0] && depart[1]-1==arrivee[1]){
-				printf("dir 2\n");			
+				/*printf("dir 2\n");			*/
 				return 2;
 			}
 			else if (depart[0]-1==arrivee[0] && depart[1]-1==arrivee[1]){

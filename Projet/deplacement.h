@@ -31,7 +31,7 @@ int direction(int *depart,int  *arrivee);
 int directionBoules(int **coor);
 
 /*fonction qui liste tout les deplacements possible d'une couleur */
-char** listeToutDeplacement(Plateau *p, char color);
+
 int directionTroisBoules(int ** coor,Plateau *p);
 
 

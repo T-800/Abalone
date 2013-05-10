@@ -33,6 +33,7 @@ int gamePIA(Plateau *p){
 				printf("\n\nTOUR BLANC\n\n");
 				if (p->typeBlanc == 1){/* IA*/
 					printf("IA\n");
+
 				}
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
@@ -72,6 +73,7 @@ int gamePIA(Plateau *p){
 				printf("\n\nTOUR NOIR\n");
 				if (p->typeNoir == 1){/* IA*/
 					printf("IA\n");
+					
 				}
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
