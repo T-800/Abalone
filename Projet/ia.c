@@ -1,5 +1,5 @@
 #include "ia.h"
 
-void play(){
+void play(char color,Plateau *p){
 	return;
 }

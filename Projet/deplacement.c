@@ -10,14 +10,29 @@ int nbBouleDeplace(Plateau *p, int **coor){
 	if (coor[0][0]==2){
 		return 1;
 	}else {/* A finir */
+		printf("razazazazazazaz\n");
 		int dirBoules = direction(coor[1],coor[3]);
+		printf("pmpmppppppppp %d \n",dirBoules);
 		int *caseSuivBoules = caseSuivant(p,coor[1], dirBoules);
-		if (caseSuivBoules[0] == coor[2][0] && caseSuivBoules[1] == coor[2][1]){
+		if (dirBoules!=-1 &&caseSuivBoules[0] == coor[2][0] && caseSuivBoules[1] == coor[2][1]){
 			return 2;
 			
 		}
 		return 3;
 	}
+}
+
+int destDeplacement(Plateau *p,int *dep,int *arr){
+	int i;
+
+	for (i = 0; i < 6; i++){
+		int *caseSuiv=caseSuivant(p, dep, i);
+		if (caseSuiv[0]==arr[0] && caseSuiv[1]==arr[1]){
+			return 0;
+			printf("rfrfrfrfrfrfr\n");
+		}
+	}
+	return -1;
 }
 
 /*renvoi les coordonnées de la case suivante null si en dehors du plateau*/
@@ -184,7 +199,17 @@ int deplacement(Plateau *p, int **coor,char couleur){
 	switch(nbBouleDeplace(p,coor)){
 		case 1:
 		printf("DEPLACEMENT 1 boule s\n");
+			
 			dirDep = direction(coor[1],coor[2]);
+			if(destDeplacement(p,coor[1],coor[2])!=-1){
+
+			}
+			else {
+				printf("rgtrhrtyhyrtgsrtg\n");
+				codeErreur(5);
+				return -1;
+
+			}
 		 	caseSuivDir = caseSuivant(p,coor[1], dirDep);
 			if(caseSuivDir != NULL){
 				if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
@@ -372,10 +397,15 @@ int deplacement(Plateau *p, int **coor,char couleur){
 					return -1;
 				}
 			}
+			else if (dirBoule == -1 || dirDep == -1){
+				printf("erreur rofjroforforjDCFVGBHNJ,IKOINBGVFCDXCFVGBHNJ,K\n");
+				codeErreur(5);
+				return -1;
+			}
 			else{
 
 				
-
+				printf("dirdep %d dirboule %d\n",dirDep,dirBoule);
 				int ** boule1, **boule2, **boule3;
 				boule1 = malloc( sizeof(int *)  *  3);
 				boule1[0] = malloc( sizeof(int)  *  1);
@@ -385,6 +415,7 @@ int deplacement(Plateau *p, int **coor,char couleur){
 				boule1[0][0] = 2;
 				boule1[1] = coor[1];
 				boule1[2] = coor[3];
+				printf(" o = %d i = %d\n", coor[3][0],coor[3][1]);
 
 				
 				boule2 = malloc( sizeof(int *)  *  3);
@@ -392,11 +423,12 @@ int deplacement(Plateau *p, int **coor,char couleur){
 				boule2[1] = malloc( sizeof(int)  *  2);
 				boule2[2] = malloc( sizeof(int)  *  2);
 
-
+				printf("frfrfrfrfr\n");
 				boule2[0][0] = 2;
 				boule2[1] = caseSuivant(p,coor[1], dirBoule);
 				boule2[2] = caseSuivant(p,boule2[1], dirDep);
 
+				printf("efefzrgthyjrhtfzedszdfrteh\n");
 				boule3 = malloc( sizeof(int *)  *  3);
 				boule3[0] = malloc( sizeof(int)  *  1);
 				boule3[1] = malloc( sizeof(int)  *  2);
@@ -405,10 +437,15 @@ int deplacement(Plateau *p, int **coor,char couleur){
 				boule3[0][0] = 2;
 				boule3[1] = caseSuivant(p,boule2[1], dirBoule);
 				boule3[2] = caseSuivant(p,boule3[1], dirDep);
+				printf("ffffffffffffffffffffff\n");
 
-				deplacement(p,boule1,couleur);
-				deplacement(p,boule2,couleur);
 				deplacement(p,boule3,couleur);
+				printf("ggggggggggggg\n");
+				deplacement(p,boule2,couleur);
+
+				printf("tttttttttttttttt\n");
+				deplacement(p,boule1,couleur);
+
 			}
 
 
@@ -455,13 +492,13 @@ int directionBoules(int **coor){
 
 int direction(int *depart, int *arrivee){
 
-	/*printf("START direction deplacement \n");
+	printf("START direction deplacement \n");
 
 	printf("depart 0 %d, depart 1 %d\n", depart[0],depart[1]);
 	printf("arrivee 0 %d, arrivee 1 %d\n", arrivee[0],arrivee[1]);
 
 
-	printf("direction deplacement FIN\n");*/
+	printf("direction deplacement FIN\n");
 
 
 	switch(depart[0]){

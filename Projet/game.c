@@ -49,11 +49,17 @@ int gamePIA(Plateau *p){
 						}
 						else return -1;
 					}
-
+					printf("effefef\n");
 					coordonnee = decoupageCoups(coups);
+					printf("egegrgrgrgrgr\n");
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='B'){
-							deplacement(p,coordonnee,'B');
+							if ( deplacement(p,coordonnee,'B') !=-1 ){
+							 	/* code */
+							 }
+							 else {
+							 	tour--;
+							 }
 						}else{
 							printf("ERREUR Tu ne peux pas deplacer ce pion\n");
 							tour--;
@@ -92,7 +98,12 @@ int gamePIA(Plateau *p){
 					coordonnee = decoupageCoups(coups);
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='N'){
-							deplacement(p,coordonnee,'N');
+							if ( deplacement(p,coordonnee,'N') !=-1 ){
+							 	/* code */
+							 }
+							 else {
+							 	tour--;
+							 }
 						}else{
 							printf("ERREUR Tu ne peux pas deplacer ce pion\n");
 							tour--;
