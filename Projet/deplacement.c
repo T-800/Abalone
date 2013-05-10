@@ -1,19 +1,16 @@
 #include "deplacement.h"
-#include <time.h>  
 
 
 
 /*Renvoi le nombre de boule a deplacer pour la meme couleur*/
 int nbBouleDeplace(Plateau *p, int **coor){
-	
+
 
 
 	if (coor[0][0]==2){
 		return 1;
 	}else {/* A finir */
-		printf("razazazazazazaz\n");
 		int dirBoules = direction(coor[1],coor[3]);
-		printf("pmpmppppppppp %d \n",dirBoules);
 		int *caseSuivBoules = caseSuivant(p,coor[1], dirBoules);
 		if (dirBoules!=-1 ){
 			if(caseSuivBoules[0] == coor[2][0] && caseSuivBoules[1] == coor[2][1]){
@@ -53,7 +50,7 @@ int* caseSuivant(Plateau *p, int *coor, int direction){
 						casuiv[0] = coor[0]-1;
 						casuiv[1] = coor[1]-1;
 						break;
-					
+
 
 					case 4:
 						casuiv[0] = coor[0]-1;
@@ -87,7 +84,7 @@ int* caseSuivant(Plateau *p, int *coor, int direction){
 						casuiv[0] = coor[0]-1;
 						casuiv[1] = coor[1]-1;
 						break;
-					
+
 
 					case 4:
 						casuiv[0] = coor[0]-1;
@@ -122,7 +119,7 @@ int* caseSuivant(Plateau *p, int *coor, int direction){
 						casuiv[0] = coor[0]-1;
 						casuiv[1] = coor[1];
 						break;
-					
+
 
 					case 4:
 						casuiv[0] = coor[0]-1;
@@ -134,8 +131,8 @@ int* caseSuivant(Plateau *p, int *coor, int direction){
 						break;	
 				}
 				break;
-			
-			
+
+
 		}
 		if (casuiv[0] != -1 && casuiv[1] != -1){
 			printf("ff\n");
@@ -145,7 +142,7 @@ int* caseSuivant(Plateau *p, int *coor, int direction){
 			else return NULL;
 		}
 		else return NULL;
-		
+
 
 }
 
@@ -158,7 +155,7 @@ int deplaceBoule(Plateau *p, int *depart, int *arrivee){ /*FINI*/
 
 /*affiche les codes erreurs*/
 void codeErreur(int code){
-	
+
 	switch(code){
 		case 1:
 			printf("case suivante NULL (deplace 1 boule)\n" );
@@ -189,7 +186,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 	switch(nbBouleDeplace(p,coor)){
 		case 1:
 			printf("DEPLACEMENT 1 boule s\n");
-			
+
 			dirDep = direction(coor[1],coor[2]);
 			printf("%d\n",dirDep );
 			if(dirDep!=-1){
@@ -216,7 +213,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 						coordonnee[2] = caseSuivDir;
 						coordonnee[3] = coor[2];
 
-						
+
 						if (list==1){
 							int i;
 							for (i = 0; i < 6; i++){
@@ -252,16 +249,12 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 			dirBoule = direction(coor[1],coor[2]);
 			dirDep = direction(coor[1],coor[3]);
 			if (dirDep != -1 && dirBoule!=-1){
-				
+
 				if(couleur != p->tableau[coor[2][0]][coor[2][1]]){
 					printf("err couleur \n");
 					return -1;
 				}
 
-			if(couleur != p->tableau[coor[2][0]][coor[2][1]]){
-				printf("err couleur \n");
-				return -1;
-			}
 
 				if (dirDep == dirBoule){
 					caseSuivDir = caseSuivant(p,coor[2], dirDep);
@@ -291,7 +284,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 										deplaceBoule(p,coor[1], coor[2]);
 									}
 
-									
+
 								}
 								else {
 									codeErreur(4); /*case suivante NON VIDE (deplace 1 boule)*/
@@ -310,7 +303,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 						}
 						else {
 							printf("buguozhuo\n");
-							
+
 							if (list==1){
 								int i;
 								for (i = 0; i < 6; i++){
@@ -340,7 +333,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 					boule1[1] = coor[1];
 					boule1[2] = coor[3];
 
-					
+
 					boule2 = malloc( sizeof(int *)  *  3);
 					boule2[0] = malloc( sizeof(int)  *  1);
 					boule2[1] = malloc( sizeof(int)  *  2);
@@ -356,30 +349,25 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 					deplacement(p,boule1,couleur,list );
 					deplacement(p,boule2,couleur,list );
 					free(coor);
-				
+
 				}
 
 
-				boule2[0][0] = 2;
-				boule2[1] = coor[2];
-				boule2[2] = caseSuivant(p,coor[2], dirDep);
 
-				deplacement(p,boule1,couleur);
-				deplacement(p,boule2,couleur);
 
 			}else {
 				printf("Direction deplacement/Boule IMPOSSIBLE (2 boules)\n");
 			}
 
-			
-			
-			
 
 
 
-	
 
-			
+
+
+
+
+
 
 			break;
 		case 3: /*si on en deplace 3*/
@@ -400,11 +388,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 								deplaceBoule(p,caseSuivDir, coor[2]);
 								deplaceBoule(p,coor[1], coor[3]);
 							}
-						
-						deplaceBoule(p,coor[2], caseSuivDir);
-						caseSuivDir = caseSuivant(p,coor[1], dirDep);
-						deplaceBoule(p,caseSuivDir, coor[2]);
-						deplaceBoule(p,coor[1], coor[3]);
+
 					}
 					else if (p->tableau[caseSuivDir[0]][caseSuivDir[1]] == couleur){
 						codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
@@ -466,11 +450,11 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 										deplaceBoule(p,coor[1], coor[3]);
 									}	
 
-									
+
 								}
 
 							}
-							
+
 
 						}
 					}
@@ -488,7 +472,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 			}
 			else{
 
-				
+
 				printf("dirdep %d dirboule %d\n",dirDep,dirBoule);
 				int ** boule1, **boule2, **boule3;
 				boule1 = malloc( sizeof(int *)  *  3);
@@ -501,7 +485,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 				boule1[2] = coor[3];
 				printf(" o = %d i = %d\n", coor[3][0],coor[3][1]);
 
-				
+
 				boule2 = malloc( sizeof(int *)  *  3);
 				boule2[0] = malloc( sizeof(int)  *  1);
 				boule2[1] = malloc( sizeof(int)  *  2);
@@ -619,7 +603,7 @@ int direction(int *depart, int *arrivee){
 				return 5;
 			}
 			break;
-		
+
 
 
 		case 4 :
@@ -642,7 +626,7 @@ int direction(int *depart, int *arrivee){
 				return 5;
 			}
 			break;
-		
+
 		case 5 :
 		case 6 :
 		case 7 :
@@ -694,6 +678,7 @@ int directionTroisBoules(int ** coor,Plateau *p){
 
 
 }
+
 
 
 
@@ -774,6 +759,7 @@ int coupsPossible(Plateau *p, int *coord_depart, char couleur){
     return 0;
     
 }
+
 
 /*
 
