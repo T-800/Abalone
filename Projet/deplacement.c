@@ -747,13 +747,13 @@ int coupsPossible(Plateau *p, int *coord_depart, char couleur){
         
         deplacementPossible[i][y] = malloc( 2 * sizeof(int));
         
-        deplacementPossible[i][y][0] = coord_depart;
-        deplacementPossible[i][y][1] = caseSuivante;
-        y+=1;
+        deplacementPossible[i][y] = coord_depart;
+	y+=1;
+        deplacementPossible[i][y] = caseSuivante;
     }
     
     for(i = 0; i < 6 ; i++ ){
-        deplacement(p,deplacementPossible[i],couleur);
+        deplacement(p,deplacementPossible[i],couleur,1);
     }
     
     return 0;
