@@ -134,7 +134,10 @@ int* caseSuivant(Plateau *p, int *coor, int direction){
 		}
 		if (casuiv[0] != -1 && casuiv[1] != -1){
 			printf("ff\n");
-			return casuiv;
+			if(coordonneesValides(casuiv[0], casuiv[1])!=-1){
+				return casuiv;
+			}
+			else return NULL;
 		}
 		else return NULL;
 		
@@ -173,18 +176,16 @@ void codeErreur(int code){
 }
 
 /*fonction gobale du deplacement*/
-int deplacement(Plateau *p, int **coor){
-	char couleur;
-	int *caseSuivDir;/* caseSuivBoule;*/
+int deplacement(Plateau *p, int **coor,char couleur){
+	int *caseSuivDir; /*caseSuivBoule;*/
 	int dirBoule, dirDep;
 
-	couleur = p->tableau[coor[1][0]][coor[1][1]];
 
 	switch(nbBouleDeplace(p,coor)){
 		case 1:
+		printf("DEPLACEMENT 1 boule s\n");
 			dirDep = direction(coor[1],coor[2]);
-			caseSuivDir = caseSuivant(p,coor[1], dirDep);
-			/*printf("arrivee %d %d\n",caseSuiv[0], caseSuiv[1] );*/
+		 	caseSuivDir = caseSuivant(p,coor[1], dirDep);
 			if(caseSuivDir != NULL){
 				if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
 					deplaceBoule(p,coor[1], caseSuivDir);
@@ -202,7 +203,7 @@ int deplacement(Plateau *p, int **coor){
 					coordonnee[2] = caseSuivDir;
 					coordonnee[3] = coor[2];
 
-					deplacement(p,coordonnee);
+					deplacement(p,coordonnee,couleur);
 					/*return 0;*/
 					/* code */
 				}
@@ -219,25 +220,13 @@ int deplacement(Plateau *p, int **coor){
 
 			break;
 		case 2:/*si on deplace 2 boules*/
-			
+			printf("DEPLACEMENT 2 boule s\n");
 			dirBoule = direction(coor[1],coor[2]);
 			dirDep = direction(coor[1],coor[3]);
 
 			if(couleur != p->tableau[coor[2][0]][coor[2][1]]){
 				printf("err couleur \n");
 				return -1;
-			}
-			if(dirDep != dirBoule && (dirDep % 3 == dirBoule % 3)){
-
-				int *coor2 = coor[1];
-				coor[1] = coor[2];
-				coor[2] = coor2;
-				printf("test1\n");
-
-				/*return deplacement(p,coor);*/
-
-				printf("test2\n");
-
 			}
 
 
@@ -270,7 +259,7 @@ int deplacement(Plateau *p, int **coor){
 					else {
 						printf("buguozhuo\n");
 						coor[2] = caseSuivDir;
-						deplacement(p,coor);
+						deplacement(p,coor,couleur);
 					}	
 				}else {
 					codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
@@ -299,8 +288,8 @@ int deplacement(Plateau *p, int **coor){
 				boule2[1] = coor[2];
 				boule2[2] = caseSuivant(p,coor[2], dirDep);
 
-				deplacement(p,boule1);
-				deplacement(p,boule2);
+				deplacement(p,boule1,couleur);
+				deplacement(p,boule2,couleur);
 
 				
 			}
@@ -309,32 +298,119 @@ int deplacement(Plateau *p, int **coor){
 
 
 
-			/*
-			si la direction des boules == direction deplacement 		x
-				si la case apres la derniere boule existe   			x
-					si case vide 										x
-						je deplace 2 boules 							x
-					sinon si couleur differente
-						si case apres existe
-							si vide 
-								deplace 
-							sinon 
-								err
-						sinon 
-							boule tombe 
-					sinon 
-						err
-				sinon
-					err
-			sinon
-
-			*/
+	
 
 			
 
 			break;
 		case 3: /*si on en deplace 3*/
 			printf("DEPLACEMENT 3 BOULES\n");
+			dirDep = direction(coor[1],coor[3]);
+			dirBoule = directionTroisBoules(coor,p);
+
+			if (dirDep == dirBoule){
+				caseSuivDir = caseSuivant(p,coor[2], dirDep);
+				if(caseSuivDir != NULL){
+					if(p->tableau[caseSuivDir[0]][caseSuivDir[1]] == '.'){
+						
+						deplaceBoule(p,coor[2], caseSuivDir);
+						caseSuivDir = caseSuivant(p,coor[1], dirDep);
+						deplaceBoule(p,caseSuivDir, coor[2]);
+						deplaceBoule(p,coor[1], coor[3]);
+					}
+					else if (p->tableau[caseSuivDir[0]][caseSuivDir[1]] == couleur){
+						codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
+						return -1;
+					}
+					else {
+						int *caseSuivDir2 = caseSuivant(p,caseSuivDir, dirDep);
+						if(caseSuivDir2 != NULL){
+							if(p->tableau[caseSuivDir2[0]][caseSuivDir2[1]] == '.'){
+								deplaceBoule(p,caseSuivDir, caseSuivDir2);
+								deplaceBoule(p,coor[2], caseSuivDir);
+								caseSuivDir = caseSuivant(p,coor[1], dirDep);
+								deplaceBoule(p,caseSuivDir, coor[2]);
+								deplaceBoule(p,coor[1], coor[3]);
+							}
+							else if(p->tableau[caseSuivDir2[0]][caseSuivDir2[1]] == couleur){
+								codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
+								return -1;
+							}
+							else {
+								int *caseSuivDir3 = caseSuivant(p,caseSuivDir2, dirDep);
+								if(caseSuivDir3 != NULL){
+									if(p->tableau[caseSuivDir3[0]][caseSuivDir3[1]] == '.'){
+										deplaceBoule(p,caseSuivDir2, caseSuivDir3);
+										deplaceBoule(p,caseSuivDir, caseSuivDir2);
+										deplaceBoule(p,coor[2], caseSuivDir);
+										caseSuivDir = caseSuivant(p,coor[1], dirDep);
+										deplaceBoule(p,caseSuivDir, coor[2]);
+										deplaceBoule(p,coor[1], coor[3]);
+									}
+									else {
+										codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
+										return -1;
+									}
+								}
+								else {
+									deplaceBoule(p,caseSuivDir, caseSuivDir2);
+									deplaceBoule(p,coor[2], caseSuivDir);
+									caseSuivDir = caseSuivant(p,coor[1], dirDep);
+									deplaceBoule(p,caseSuivDir, coor[2]);
+									deplaceBoule(p,coor[1], coor[3]);
+								}
+
+							}
+							
+
+						}
+					}
+
+				}
+				else {
+					codeErreur(5); /*case suivante NULL (deplace 1 boule)*/
+					return -1;
+				}
+			}
+			else{
+
+				
+
+				int ** boule1, **boule2, **boule3;
+				boule1 = malloc( sizeof(int *)  *  3);
+				boule1[0] = malloc( sizeof(int)  *  1);
+				boule1[1] = malloc( sizeof(int)  *  2);
+				boule1[2] = malloc( sizeof(int)  *  2);
+
+				boule1[0][0] = 2;
+				boule1[1] = coor[1];
+				boule1[2] = coor[3];
+
+				
+				boule2 = malloc( sizeof(int *)  *  3);
+				boule2[0] = malloc( sizeof(int)  *  1);
+				boule2[1] = malloc( sizeof(int)  *  2);
+				boule2[2] = malloc( sizeof(int)  *  2);
+
+
+				boule2[0][0] = 2;
+				boule2[1] = caseSuivant(p,coor[1], dirBoule);
+				boule2[2] = caseSuivant(p,boule2[1], dirDep);
+
+				boule3 = malloc( sizeof(int *)  *  3);
+				boule3[0] = malloc( sizeof(int)  *  1);
+				boule3[1] = malloc( sizeof(int)  *  2);
+				boule3[2] = malloc( sizeof(int)  *  2);
+
+				boule3[0][0] = 2;
+				boule3[1] = caseSuivant(p,boule2[1], dirBoule);
+				boule3[2] = caseSuivant(p,boule3[1], dirDep);
+
+				deplacement(p,boule1,couleur);
+				deplacement(p,boule2,couleur);
+				deplacement(p,boule3,couleur);
+			}
+
 
 
 			break;
@@ -342,7 +418,7 @@ int deplacement(Plateau *p, int **coor){
 	return 0;
 }
 
-/*int coordonneesValides(int coorA, int coorB){
+int coordonneesValides(int coorA, int coorB){
 
 	switch (coorA){
 
@@ -366,10 +442,10 @@ int deplacement(Plateau *p, int **coor){
 			if (coorB < 9 && coorB>=0)return 0;
 			break;
 	}
-	codeErreur(3)	coordonnées non valide
+	codeErreur(3);/*	coordonnées non valide*/
 	return -1;
 }
-*/
+
 char** listeToutDeplacement(Plateau *p, char color);
 
 int directionBoules(int **coor){
@@ -476,3 +552,89 @@ int direction(int *depart, int *arrivee){
 
 
 }
+int directionTroisBoules(int ** coor,Plateau *p){
+	int ** dirrectionPossible = malloc(sizeof(int)*6);
+	int i;
+	for (i = 0; i < 6; i++){
+		dirrectionPossible[i] = malloc(sizeof(int)*2);
+		dirrectionPossible[i] = caseSuivant(p, coor[1], i);
+		if(dirrectionPossible[i]!= NULL && direction(dirrectionPossible[i],coor[2]) != -1){
+			printf("direction 3 boules = %d\n",i );
+			return i;
+		}
+
+	}
+	printf("ERREUR DIRECTION 3 BOULES\n");
+	return -1;
+
+
+}
+
+
+/*
+
+si toute les boules son de la meme couleur 
+
+si je deplace 1 boule 
+	si la case suivante existe
+		si la case suivante est vide 
+			je deplace la boule
+
+		si la case suivante est de la meme couleur
+			RECURSION deplacement 2 boules
+		si la case suivante est d'une couleur differente
+			erreur deplacement impossible
+	sinon 
+		erreur
+si je deplace 2 boules 
+	si la direction des boules = direction des deplacements 
+		si la case apres la 2 eme boule existe
+			si la case est vide 
+				je deplace les 2 boules 
+			sinon si boule de la meme couleur 
+				RECURSION deplacement 3 boules
+			sinon 
+				si la case apres est vide
+					deplacement des 3 boules
+				sinon 
+					erreur
+		sinon 
+			je deplace les 2 boules (la boule tombe)
+	sinon 
+		REcursion deplacement 1boule pour les 2 boules 
+
+si je deplace 3 boules
+	si la direction des boules = direction des deplacements 
+		si la case apres la 3 eme boules existe
+			si case vide										
+				je deplace les 2 boules 								BBB. 
+			sinon si boule meme couleur 								BBBB
+				erreur
+			sinon 														BBBN
+				si la case d'apres existe						
+					si case vide 										BBBN.
+						je deplace les 3 boules plus l'autre boule  
+					sinon si boule meme couleur 						BBBNB
+						erreur
+					sinon 												BBBNN
+						si la case d'apres existe						BBBNN
+							si elle est vide 							BBBNN.
+								deplace 5 boule
+							sinon 
+								erreur
+						sinon 
+							je deplace les 4 boules 1 boule tombe
+
+				sinon
+					je deplace les 3 boules (la boule tombe)
+
+
+		sinon 
+			erreur
+
+	sinon 
+		REcursion deplacement 1boule pour les 3 boules 
+
+
+
+*/

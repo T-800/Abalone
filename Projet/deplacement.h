@@ -20,10 +20,10 @@ int deplaceBoule(Plateau *p, int *depart, int *arrivee);
 void codeErreur(int code);
 
 /*fonction gobale du deplacement*/
-int deplacement(Plateau *p, int **coor);
+int deplacement(Plateau *p, int **coor,char couleur);
 
 
-/*int coordonneesValides(int coorA, int corrB);*/
+int coordonneesValides(int coorA, int corrB);
 
 
 int direction(int *depart,int  *arrivee);
@@ -32,6 +32,7 @@ int directionBoules(int **coor);
 
 /*fonction qui liste tout les deplacements possible d'une couleur */
 char** listeToutDeplacement(Plateau *p, char color);
+int directionTroisBoules(int ** coor,Plateau *p);
 
 
 

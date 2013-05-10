@@ -10,7 +10,7 @@ int gameTest(Plateau *p){ /*FINI*/
 		clear();
 		coordonnee = decoupageCoups(coups);
 		if (coordonnee != NULL){
-			deplacement(p,coordonnee);
+			deplacement(p,coordonnee,p->tableau[coordonnee[1][0]][coordonnee[1][0]]);
 			affichagePlateau(p);
 		}
 		else printf("coups invalide\n");
@@ -38,9 +38,10 @@ int gamePIA(Plateau *p){
 					printf("HUMAIN\n");
 					scanf("%s" ,coups);
 					if (strcomp(coups,"SAVE")||strcomp(coups,"save")){	
+						char continueJouer;
 						sauvegarde(p);
 						printf("Continuer à jouer ? [Y/n]\n");
-						char continueJouer;
+						
 						scanf("%s" ,&continueJouer);
 						if (continueJouer == 'y' || continueJouer == 'Y'){
 							scanf("%s" ,coups);
@@ -51,7 +52,7 @@ int gamePIA(Plateau *p){
 					coordonnee = decoupageCoups(coups);
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='B'){
-							deplacement(p,coordonnee);
+							deplacement(p,coordonnee,'B');
 						}else{
 							printf("ERREUR Tu ne peux pas deplacer ce pion\n");
 							tour--;
@@ -76,9 +77,10 @@ int gamePIA(Plateau *p){
 					printf("HUMAIN\n");
 					scanf("%s" ,coups);
 					if (strcomp(coups,"SAVE")||strcomp(coups,"save")){	
+						char continueJouer;
 						sauvegarde(p);
 						printf("Continuer à jouer ? [Y/n]\n");
-						char continueJouer;
+						
 						scanf("%s" ,&continueJouer);
 						if (continueJouer == 'y' || continueJouer == 'Y'){
 							scanf("%s" ,coups);
@@ -88,7 +90,7 @@ int gamePIA(Plateau *p){
 					coordonnee = decoupageCoups(coups);
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='N'){
-							deplacement(p,coordonnee);
+							deplacement(p,coordonnee,'N');
 						}else{
 							printf("ERREUR Tu ne peux pas deplacer ce pion\n");
 							tour--;
