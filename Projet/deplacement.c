@@ -211,7 +211,7 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 						coordonnee[2] = malloc( sizeof(int)  *  2);
 						coordonnee[3] = malloc( sizeof(int)  *  2);
 
-						coordonnee[0] = coor[0]+1;
+						coordonnee[0][0] = coor[0][0]+1;
 						coordonnee[1] = coor[1];
 						coordonnee[2] = caseSuivDir;
 						coordonnee[3] = coor[2];
