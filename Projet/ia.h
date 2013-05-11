@@ -1,6 +1,7 @@
 #ifndef IA_H_INCLUDED
 #define IA_H_INCLUDED
 
+#include <time.h>  
 #include "deplacement.h"
 
 int *** coupsPossibles;
