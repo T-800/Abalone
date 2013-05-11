@@ -33,6 +33,7 @@ int gamePIA(Plateau *p){
 				printf("\n\nTOUR BLANC\n\n");
 				if (p->typeBlanc == 1){/* IA*/
 					printf("IA\n");
+                                        play('B', p);
 
 				}
 				else  { /*HUMAIN*/

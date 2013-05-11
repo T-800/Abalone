@@ -28,6 +28,7 @@ int* caseSuivant(Plateau *p, int *coor, int direction){
 	int *casuiv = malloc((sizeof(int)*2));
 	casuiv[0] = -1;
 	casuiv[1] = -1;
+	printf("Dans caseSuivant coord 0 = %d \n", coor[0]);
 	switch(coor[0]){
 			case 0:
 			case 1:
@@ -695,7 +696,7 @@ int** pionsDeCouleur(Plateau *p, char couleur){
     if(couleur == 'B')
         tab_pions = malloc( (14 - p->billesBlachesperdues) * sizeof(int));
     
-    
+    printf("Pions de couleur %c : \n", couleur);
     for(i = 0 ; i < 9 ; i++){
         for(j = 0 ; j < strlen(p->tableau[i]) ; j++){
             
@@ -704,54 +705,100 @@ int** pionsDeCouleur(Plateau *p, char couleur){
                 tab_pions[x] = malloc( 2 * sizeof(int));
                 tab_pions[x][0] = i;
                 tab_pions[x][1] = j;
+				printf("pion %d =  %d %d \n",x,tab_pions[x][0],tab_pions[x][1] );
                 x ++;
                 
             }
             
         }
     }
-    
+    printf("\n");
     return tab_pions;
 }
 
-int* coord_random_pion(Plateau *p, int **coord_pions,char couleur){
+int* coord_random_pion(Plateau *p, char couleur){
     /* Renvoi les coordonnées d'un pion au hasard parmi un tableau de coordonnées*/
+	int r;
+	srand(time(0));
     int pions = 0;
     int *random = malloc(2 * sizeof(int));
     int **pions_possible = pionsDeCouleur(p, couleur);
 
-    if(couleur == 'N')
+    if(couleur == 'N'){
         pions = 14 - p->billesNoiresperdues;
-    if(couleur == 'B')
+	}
+    if(couleur == 'B'){
         pions = 14 - p->billesBlachesperdues;
-
-    random = pions_possible[rand()%pions];
-    
+	}
+	r = rand() % pions;
+	
+    random = pions_possible[r];
+    printf("Pion choisie aléatoirement : ");
+    printf("y(ordonné) = %d et x(abscisse) = %d \n\n", random[0], random[1]);
     return random;
 }
 
 
 int coupsPossible(Plateau *p, int *coord_depart, char couleur){
     /* Initialise les coups possible à partir d'un pion et les teste avec la fonction deplacement */
-    int i, *caseSuivante;
-    int y = 0;
-    int ***deplacementPossible = malloc(6 * sizeof(int));
+	
+	printf("On entre dans coupsPossible !\n");
+    int i, *caseSuivante,c,d;
+    int y = 0,size = 1,first = 0;
+    int ***deplacementPossible = malloc(sizeof(int));
     
     for(i = 0 ; i <= 5 ; i++){
-        y = 0;
-        caseSuivante = caseSuivant(p, coord_depart, i);
-        
-        deplacementPossible[i] = malloc( 3 * sizeof(int));
-        deplacementPossible[i][y] = malloc(sizeof(int));
-        deplacementPossible[i][y][0] = 2;
-        y +=1;
-        
-        deplacementPossible[i][y] = malloc( 2 * sizeof(int));
-        
-        deplacementPossible[i][y] = coord_depart;
-	y+=1;
-        deplacementPossible[i][y] = caseSuivante;
+        printf("----Debut----\n");
+		if(caseSuivant(p, coord_depart, i) == NULL){
+			printf("ERREUR NULL !\n");
+		}
+		else{
+			printf("caseSuivant EXISTE !\n");
+			
+			if(first == 1){
+				size++;
+				deplacementPossible = realloc(deplacementPossible,sizeof(int)*size);
+			}
+			
+			y = 0;
+			caseSuivante = caseSuivant(p, coord_depart, i);
+			
+			printf("Elle existe : \n");
+			printf("=====> caseSuivante = %d %d \n\n",caseSuivante[0], caseSuivante[1] );
+			
+			deplacementPossible[(size-1)] = malloc( 3 * sizeof(int));
+			deplacementPossible[(size-1)][y] = malloc(sizeof(int));
+			deplacementPossible[(size-1)][y][0] = 2;
+			y +=1;
+			
+			deplacementPossible[(size-1)][y] = malloc( 2 * sizeof(int));
+			deplacementPossible[(size-1)][y] = coord_depart;
+			y+=1;
+			deplacementPossible[(size-1)][y] = caseSuivante;
+			printf("size = %d\n", size);
+			first = 1;
+		}
+		printf("------FIn-----\n\n");
     }
+    
+    printf("size = %d\n", size);
+	printf(" nb de coup = %d,", deplacementPossible[0][0][0]);
+	
+    for(c = 0; c < size ; c++){
+		printf("LOLOLO\n");
+		/*printf("c = %d et nb coups = %d ",c, deplacementPossible[c][0][0]);*/
+		for(d = 1; d < 3; d++){
+			if(d == 1){
+				printf("%d) nb de coup = %d,",c, deplacementPossible[c][0][0]);
+				printf(" coord1 y = %d x = %d", deplacementPossible[c][d][0], deplacementPossible[c][d][1]);
+			}
+			else{
+				printf(" / coord2 y = %d x = %d", deplacementPossible[c][d][0], deplacementPossible[c][d][1]);
+			}
+		}
+	printf("\n");
+    }
+    printf("TIK");
     
     for(i = 0; i < 6 ; i++ ){
         deplacement(p,deplacementPossible[i],couleur,1);
