@@ -743,7 +743,7 @@ int coupsPossible(Plateau *p, int *coord_depart, char couleur){
 			
 			if(first == 1){
 				size++;
-				deplacementPossible = realloc(deplacementPossible,size);
+				deplacementPossible = realloc(deplacementPossible,size*sizeof(int));
 			}
 			
 			y = 0;
