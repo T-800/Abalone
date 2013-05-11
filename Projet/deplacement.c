@@ -558,9 +558,7 @@ int coordonneesValides(int coorA, int coorB){
 
 char** listeToutDeplacement(Plateau *p, char color);
 
-int directionBoules(int **coor){
-	return 0;
-}
+
 
 
 int direction(int *depart, int *arrivee){
