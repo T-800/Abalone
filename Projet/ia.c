@@ -5,18 +5,19 @@ int x = 0;
 
 
 void play(char color,Plateau *p){
-	int a,i,d;
+	int i,d,r;
 	int *pion_random;
 	extern int x;
-	a = 0;
+	
+	srand(time(0));
+	
 	pion_random = coord_random_pion(p, color);
 	
 	coupsPossible(p, pion_random, color);
 	
 	
-	
+	printf("L'IA peut jouer un des coups suivants :\n");
     for(i = 0; i < x ; i++){
-		printf("LOLOLO\n");
 		/*printf("c = %d et nb coups = %d ",c, deplacementPossible[c][0][0]);*/
 		for(d = 1; d <= 3; d++){
 			if(coupsPossibles[i][0][0] == 2){
@@ -36,14 +37,19 @@ void play(char color,Plateau *p){
 					printf(" coord1 y = %d x = %d", coupsPossibles[i][d][0], coupsPossibles[i][d][1]);
 				}
 				else{
-					printf(" / coord%d y = %d x = %d", d+1, coupsPossibles[i][d][0], coupsPossibles[i][d][1]);
+					printf(" / coord%d y = %d x = %d", d, coupsPossibles[i][d][0], coupsPossibles[i][d][1]);
 				}
 			}
 		}
 	printf("\n");
     }
+	printf("------------ON LANCE LE DEPLACEMENT-------------");
+	r = rand() % x;
+	printf("%d", r);
 	
-	/*deplacement(p, coupsPossibles[x],color, 0);*/
+	
+	
+	deplacement(p, coupsPossibles[r],color, 0);
 }
 
 void addToList(int ** coor){
