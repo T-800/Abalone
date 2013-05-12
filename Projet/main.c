@@ -10,7 +10,7 @@
 
 int main(int argc, char const *argv[]){
 	
-
+    srand(time(NULL)); 
 	int mode; /*1 joueur 2 test*/
     Plateau p = creationPlateau();
    

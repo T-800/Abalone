@@ -26,15 +26,15 @@ int gamePIA(Plateau *p){
 
 	affichagePlateau(p);
 
-	while(/*p->billesBlachesperdues < 6 && p->billesNoiresperdues < 6*/1){
+	while(p->billesBlachesperdues < 6 && p->billesNoiresperdues < 6){
 		
 		switch(tour%2){
 			case 0 :
 				printf("\n\nTOUR BLANC\n\n");
 				if (p->typeBlanc == 1){/* IA*/
 					printf("IA\n");
-					play('B',p);
-
+					int ** coor =play('B',p);
+					deplacement(p,coor,'B',0);
 				}
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
@@ -80,7 +80,8 @@ int gamePIA(Plateau *p){
 				printf("\n\nTOUR NOIR\n");
 				if (p->typeNoir == 1){/* IA*/
 					printf("IA\n");
-					play('N',p);
+					int ** coor =play('N',p);
+					deplacement(p,coor,'N',0);
 				}
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
@@ -122,6 +123,16 @@ int gamePIA(Plateau *p){
 		}
 		clear();
 		affichagePlateau(p);	
+
+	}
+	if (p->billesNoiresperdues==6){
+		printf("bille blanche perdu %d\n",p->billesBlachesperdues);
+		printf("bille Noir perdu %d\n",p->billesNoiresperdues);
+		printf("Blanc gagne\n");
+	}else{
+		printf("bille blanche perdu %d\n",p->billesBlachesperdues);
+		printf("bille Noir perdu %d\n",p->billesNoiresperdues);
+		printf("Noir gagne\n");
 	}
 	return 0;
 }

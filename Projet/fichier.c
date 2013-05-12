@@ -1,4 +1,4 @@
-#include "fichier.h"
+    #include "fichier.h"
 
 
 int fichierConfig(const char* fic, Plateau *plateau){
@@ -93,7 +93,7 @@ int fichierConfig(const char* fic, Plateau *plateau){
         }
         fclose(fichier);
 
-        if ( blanc != 14){
+       /* if ( blanc != 14){
             printf("il n'y a pas assez de pions Blancs sur le plateau : %d\n", blanc);
             return 3;
         }
@@ -104,7 +104,7 @@ int fichierConfig(const char* fic, Plateau *plateau){
         if (compteauCharPlateau<61){
             printf("il n'y a pas assez de char sur le plateau : %d\n", compteauCharPlateau);
             return 3;
-        }
+        }*/
 
         return 0;
     }
