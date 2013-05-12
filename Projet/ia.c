@@ -9,14 +9,15 @@ int ** play(char color,Plateau *p){
 	 * Recherche tous les mouvements possibles pour les pions de la couleur passé en argument,
 	 * et renvoi une de ces possiilité choisi aléatoirement */
 	
-	int i,**coorRandom;
+	int **coorRandom;
+	int r;
 	
 	coupsPossibles = malloc(sizeof(int**)*10);
 	tailleDeplacement=0;
 	tailleListe = 10;
 	IA(p,color);
 	
-	int r = rand()%(tailleDeplacement-0) +0;
+	r = rand()%(tailleDeplacement-0) +0;
 	
     coorRandom = coupsPossibles[r];
     
@@ -30,6 +31,7 @@ void IA(Plateau *p, char couleur){
 	/*Teste tous les pions de couleur "couleur" et stocke toutes les coordonnées de mouvements possibles pour ceux-ci */
 	
 	int i,j,k;
+	int * caseSui;
 
 	for(i = 0; i < 9; i++){
         for (j = 0; j < strlen(p->tableau[i]);j++){
@@ -43,7 +45,7 @@ void IA(Plateau *p, char couleur){
         			coor[0][0] = 2;
         			coor[1][0] = i;
         			coor[1][1] = j;
-        			int * caseSui = caseSuivant(p,coor[1], k);
+        			caseSui = caseSuivant(p,coor[1], k);
         			 
         			if(caseSui != NULL){
         				

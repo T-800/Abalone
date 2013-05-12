@@ -16,7 +16,7 @@ Plateau creationPlateau(){
 	plateau.tableau[8] = malloc (sizeof(char) * 5);
 	plateau.billesBlachesperdues = 0;
 	plateau.billesNoiresperdues = 0;
-	plateau.JoueurSuivant= 'Z';
+	plateau.JoueurSuivant= 'B';
 
     return plateau;
 }

@@ -23,6 +23,9 @@ int gamePIA(Plateau *p){
 	int tour =0;
 	char *coups = malloc(sizeof(char)*9);
 	int **coordonnee;
+	if (p->JoueurSuivant == 'N'){
+		tour=1;
+	}
 
 	affichagePlateau(p);
 
@@ -36,6 +39,7 @@ int gamePIA(Plateau *p){
 					int ** coor =play('B',p);
                     sleep(1); 
     				deplacement(p,coor,'B',0);
+    				p->JoueurSuivant = 'N';
 				}
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
@@ -57,7 +61,7 @@ int gamePIA(Plateau *p){
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='B'){
 							if ( deplacement(p,coordonnee,'B',0) !=-1 ){
-							 	/* code */
+							 	p->JoueurSuivant = 'N';
 							 }
 							 else {
 							 	tour--;
@@ -84,6 +88,7 @@ int gamePIA(Plateau *p){
 					int ** coor =play('N',p);
 					sleep(1);
 					deplacement(p,coor,'N',0);
+					p->JoueurSuivant = 'B';
 				}
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
@@ -103,7 +108,7 @@ int gamePIA(Plateau *p){
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='N'){
 							if ( deplacement(p,coordonnee,'N',0) !=-1 ){
-							 	/* code */
+							 	p->JoueurSuivant = 'B';
 							 }
 							 else {
 							 	tour--;

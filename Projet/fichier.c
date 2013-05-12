@@ -80,20 +80,22 @@ int fichierConfig(const char* fic, Plateau *plateau){
             }
             else if(compteurCharFichier == 1){
                 plateau->billesBlachesperdues = caractereActuel-48;
-                printf("bille blanche %d\n",plateau->billesBlachesperdues);
+                printf("bille blanche perdu %d\n",plateau->billesBlachesperdues);
                 compteurCharFichier++;
+                blanc+=plateau->billesBlachesperdues ;
             }
             else if(compteurCharFichier == 2){
                 plateau->billesNoiresperdues = caractereActuel-48;
-                printf("bille Noires %d\n",plateau->billesNoiresperdues);
+                printf("bille Noires perdu %d\n",plateau->billesNoiresperdues);
                 compteurCharFichier++;
+                noir+=plateau->billesNoiresperdues;
             }
             
             
         }
         fclose(fichier);
 
-       /* if ( blanc != 14){
+       if ( blanc != 14){
             printf("il n'y a pas assez de pions Blancs sur le plateau : %d\n", blanc);
             return 3;
         }
@@ -104,7 +106,7 @@ int fichierConfig(const char* fic, Plateau *plateau){
         if (compteauCharPlateau<61){
             printf("il n'y a pas assez de char sur le plateau : %d\n", compteauCharPlateau);
             return 3;
-        }*/
+        }
 
         return 0;
     }
