@@ -4,19 +4,15 @@ int syntaxeCoups(char * coups){
 
 	int taille;
 	taille = strlen(coups);
-	printf("taille de la chaine %d\n", taille);
 	if (taille == 5){
 		
-		int re = regexSyntaxeCoups(coups,"^[A-Ia-i]{1}[1-9]{1}-{1}[A-Ia-i]{1}[1-9]{1}$" );
-		printf(" regex 5 = %d\n", re);
-        
-        return 2;
+		if(coups[2]=='-')return 2;
+		else return-1;
 	}
 	else if (taille == 8){
 		
-		int re = regexSyntaxeCoups(coups,"^[A-Ia-i]{1}[1-9]{1}-{1}[A-Ia-i]{1}[1-9]{1}-{1}[A-Ia-i]{1}[1-9]{1}$" );
-		printf(" regex 8 = %d\n", re);
-		return 3;
+		if(coups[2]=='-' && coups[5]=='-')return 3;
+		else return  -1;
         
 		
 	}
@@ -52,10 +48,8 @@ int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 		coordonnee[0][0] = 2;
 		strncpy(substring, coups+0, 2);
 		a1ToCoor(coordonnee[1], substring);
-		printf("sub1 : %s\n", substring);
 		strncpy(substring, coups+3, 2);
 		a1ToCoor(coordonnee[2], substring);
-		printf("sub2 : %s\n", substring);
 
 	}else if (syntaxe == 3){
 		coordonnee = malloc( sizeof(int *)  *  4);
@@ -66,13 +60,10 @@ int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 		coordonnee[0][0] = 3;
 		strncpy(substring, coups+0, 2);
 		a1ToCoor(coordonnee[1], substring);
-		printf("sub1 : %s\n", substring);
 		strncpy(substring, coups+3, 2);
 		a1ToCoor(coordonnee[2], substring);
-		printf("sub2 : %s\n", substring);
 		strncpy(substring, coups+6, 2);
 		a1ToCoor(coordonnee[3], substring);
-		printf("sub3 : %s\n", substring);
 	}else {
 		printf("ERROR : Syntax non valide \n");
 		return NULL;
@@ -87,31 +78,7 @@ int** decoupageCoups(char *coups){ /* version Test ne prend qu'une coordonnée*/
 
 }
 
-int regexSyntaxeCoups(char *chaineTest, char *regex){
 
-		int err = 0;
-   		regex_t preg;
-   		err = regcomp (&preg, regex, REG_NOSUB | REG_EXTENDED);
-
-   		if (err == 0){
-   			int match;
-   			match = regexec (&preg, chaineTest, 0, NULL, 0);
-   			regfree (&preg);
-      		if (match == 0){
-      			printf ("%s est un coups valide  \n", chaineTest);
-      			return 0;
-      		}
-      		else if (match == REG_NOMATCH){
-      			printf ("%s n\'est pas un coups valide\n", chaineTest);
-      			return 1;
-      		}
-      		else{ /* EN cas d'erreur*/
-      			
-         		return 2;
-         	}
-        }
-        else return 123;
-}
 
 void a1ToCoor(int *tab, char * lettre){
 

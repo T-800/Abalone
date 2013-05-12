@@ -24,8 +24,7 @@ les lignes suivantes sont les coordonnées
 */
 int** decoupageCoups(char *);
 
-/**/
-int regexSyntaxeCoups(char *chaineTest, char *regex);
+
 /**/
 void a1ToCoor(int *tab, char * lettre);
 

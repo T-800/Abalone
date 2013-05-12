@@ -35,14 +35,12 @@ int gamePIA(Plateau *p){
 			case 0 :
 				printf("\n\nTOUR BLANC\n\n");
 				if (p->typeBlanc == 1){/* IA*/
-					printf("IA\n");
 					int ** coor =play('B',p);
                     sleep(1); 
     				deplacement(p,coor,'B',0);
     				p->JoueurSuivant = 'N';
 				}
 				else  { /*HUMAIN*/
-					printf("HUMAIN\n");
 					scanf("%s" ,coups);
 					if (strcomp(coups,"SAVE")||strcomp(coups,"save")){	
 						char continueJouer;
@@ -55,9 +53,7 @@ int gamePIA(Plateau *p){
 						}
 						else return -1;
 					}
-					printf("effefef\n");
 					coordonnee = decoupageCoups(coups);
-					printf("egegrgrgrgrgr\n");
 					if (coordonnee != NULL){
 						if(p->tableau[coordonnee[1][0]][coordonnee[1][1]]=='B'){
 							if ( deplacement(p,coordonnee,'B',0) !=-1 ){
@@ -84,14 +80,12 @@ int gamePIA(Plateau *p){
 			case 1 : 
 				printf("\n\nTOUR NOIR\n");
 				if (p->typeNoir == 1){/* IA*/
-					printf("IA\n");
 					int ** coor =play('N',p);
 					sleep(1);
 					deplacement(p,coor,'N',0);
 					p->JoueurSuivant = 'B';
 				}
 				else  { /*HUMAIN*/
-					printf("HUMAIN\n");
 					scanf("%s" ,coups);
 					if (strcomp(coups,"SAVE")||strcomp(coups,"save")){	
 						char continueJouer;

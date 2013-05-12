@@ -177,16 +177,28 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 						free(coordonnee);
 					}
 					else {
-						printf("case arrivé NON VIDE boule adverse (deplace 1 boule)\n");
+						if (list==1){
+						}
+						else {
+							printf("case arrivé NON VIDE boule adverse (deplace 1 boule)\n");
+						}
 						return -1;
 					}
 
 				}else {
-					printf("case arrivé NULL(en dehors du plateau) (deplace 1 boule)\n");
+					if (list==1){
+					}
+					else {
+						printf("case arrivé NULL(en dehors du plateau) (deplace 1 boule)\n");
+					}
 					return -1;
 				}	
 			}else{
-				printf("Deplacement impssible cases non adjacente\n");
+				if (list==1){
+				}
+				else {
+					printf("Deplacement impssible cases non adjacente\n");
+				}
 				return -1;
 			}
 			break;
@@ -195,7 +207,11 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 			dirDep = direction(coor[1],coor[3]);
 			if (dirDep != -1 && dirBoule!=-1){
 				if(couleur != p->tableau[coor[2][0]][coor[2][1]]){ 
-					printf("Les 2 boules à deplacer ne sont pas de la meme couleur\n");
+					if (list==1){
+					}
+					else {
+						printf("Les 2 boules à deplacer ne sont pas de la meme couleur\n");
+					}
 					return -1;
 				}
 				if (dirDep == dirBoule){/*Si le sense de deplacement est egale au sense des boules */
@@ -225,7 +241,11 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 									}
 								}
 								else {
-									printf("Case apres la bille adverse non vide deplacement 2 boules \n"); /*case suivante NON VIDE (deplace 1 boule)*/
+									if (list==1){
+									}
+									else {
+										printf("Case apres la bille adverse non vide deplacement 2 boules \n"); /*case suivante NON VIDE (deplace 1 boule)*/
+									}
 									return -1;
 								}	
 							}
@@ -249,8 +269,11 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 							deplacement(p,coor,couleur,list);
 						}	
 					}else {
-						printf("case arrivé NULL(en dehors du plateau) (deplace 2 boule)\n");
-						return -1;
+						if (list==1){
+						}
+						else {
+							printf("case arrivé NULL(en dehors du plateau) (deplace 2 boule)\n");
+						}return -1;
 					}
 				}
 				else{/*Si le sense de deplacement est different au sense des boules */	
@@ -280,7 +303,10 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 
 				}
 			}else {
-				printf("Deplacement impssible cases non adjacente\n");
+				if (list==1){
+						}
+						else {
+							printf("Deplacement impssible cases non adjacente\n");}
 				return -1;
 			}
 			break;
@@ -289,7 +315,10 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 			dirBoule = directionTroisBoules(coor,p);
 			if (dirBoule == -1 || dirDep == -1){
 				
-				printf("Deplacement impssible cases non adjacente ou boules trop eloigné\n");
+				if (list==1){
+						}
+						else {
+							printf("Deplacement impssible cases non adjacente ou boules trop eloigné\n");}
 				return -1;
 			}
 			else if (dirDep == dirBoule){/*Si le sense de deplacement est egale au sense des boules */
@@ -310,7 +339,10 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 
 					}
 					else if (p->tableau[caseSuivDir[0]][caseSuivDir[1]] == couleur){ /*Case suivante est de la meme deplacment 3 boules max*/
-						printf("Case suivante est de la meme couleur deplacment 3 boules max\n");
+						if (list==1){
+						}
+						else {
+							printf("Case suivante est de la meme couleur deplacment 3 boules max\n");}
 						return -1;
 					}
 					else {/*case d'arrivé contien bille adverse*/
@@ -334,7 +366,10 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 
 							}
 							else if(p->tableau[caseSuivDir2[0]][caseSuivDir2[1]] == couleur){
-								printf("Case apres la bille adverse non vide deplacement 3 boules \n");
+								if (list==1){
+								}
+								else {
+									printf("Case apres la bille adverse non vide deplacement 3 boules \n");}
 								return -1;
 							}
 							else {
@@ -357,7 +392,10 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 
 									}
 									else {
-										printf("Case apres 2 billes adverse non vide deplacement 3 boules \n"); /*case suivante NON VIDE (deplace 1 boule)*/
+										if (list==1){
+										}
+										else {
+											printf("Case apres 2 billes adverse non vide deplacement 3 boules \n"); /*case suivante NON VIDE (deplace 1 boule)*/ }
 										return -1;
 									}
 								}
@@ -389,7 +427,11 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 
 						}
 						else {
-							printf("case arrivé NULL(en dehors du plateau) (deplace 3 boule)\n");
+
+							if (list==1){
+						}
+						else {
+							printf("case arrivé NULL(en dehors du plateau) (deplace 3 boule)\n");}
 							return -1;
 						}
 
@@ -397,7 +439,10 @@ int deplacement(Plateau *p, int **coor,char couleur, int list){
 
 				}
 				else {
-					printf("case arrivé NULL(en dehors du plateau) (deplace 3 boule)\n");
+					if (list==1){
+						}
+						else {
+							printf("case arrivé NULL(en dehors du plateau) (deplace 3 boule)\n");}
 					return -1;
 				}
 			}
@@ -482,7 +527,7 @@ int coordonneesValides(int coorA, int coorB){
 			if (coorB < 9 && coorB>=0)return 0;
 			break;
 	}
-	printf("Coodonnées en dehors du plateau\n");
+	
 	return -1;
 }
 
