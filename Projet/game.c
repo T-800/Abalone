@@ -34,7 +34,8 @@ int gamePIA(Plateau *p){
 				if (p->typeBlanc == 1){/* IA*/
 					printf("IA\n");
 					int ** coor =play('B',p);
-					deplacement(p,coor,'B',0);
+                    sleep(1); 
+    				deplacement(p,coor,'B',0);
 				}
 				else  { /*HUMAIN*/
 					printf("HUMAIN\n");
@@ -81,6 +82,7 @@ int gamePIA(Plateau *p){
 				if (p->typeNoir == 1){/* IA*/
 					printf("IA\n");
 					int ** coor =play('N',p);
+					sleep(1);
 					deplacement(p,coor,'N',0);
 				}
 				else  { /*HUMAIN*/
