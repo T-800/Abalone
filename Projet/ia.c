@@ -5,9 +5,9 @@
 
 int ** play(char color,Plateau *p){
 	
-	/* Fonction générant un coup aléatoire : il prend un pion de la couleur,
-	recherche les possibilités de mouvement à partir de sa coordonnée,
-	et renvoi une de ces possiilité choisi aléatoirement*/
+	/* Fonction générant un coup aléatoire :
+	 * Recherche tous les mouvements possibles pour les pions de la couleur passé en argument,
+	 * et renvoi une de ces possiilité choisi aléatoirement */
 	
 	int i,**coorRandom;
 	
@@ -26,6 +26,8 @@ int ** play(char color,Plateau *p){
 }
 
 void IA(Plateau *p, char couleur){
+	
+	/*Teste tous les pions de couleur "couleur" et stocke toutes les coordonnées de mouvements possibles pour ceux-ci */
 	
 	int i,j,k;
 
